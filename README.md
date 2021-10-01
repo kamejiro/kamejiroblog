@@ -1,24 +1,25 @@
-# README
+# Ruby on Rails ブログアプリケーション
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+これは、次の教材を参考に作られたアプリケーションです。
+[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
+（第6版）
+[Michael Hartl](https://www.michaelhartl.com/) 著
 
-Things you may want to cover:
+## リンク
 
-* Ruby version
+https://www.kamejiroblog.com
 
-* System dependencies
+## サイト概要
 
-* Configuration
+ブログです。
 
-* Database creation
+## 使用技術
 
-* Database initialization
+・Ruby 3.0.2 ,Rails 6.1.4(フレームワーク)
+・heroku(本番環境サーバ)
+・Windows(OS)
+・VSCode(エディタ)
 
-* How to run the test suite
+## 機能一覧
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+・記事一覧表示機能
