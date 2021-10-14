@@ -1,0 +1,31 @@
+<%= link_to image_tag("title.png", size: "400x70"), root_path, id:'logo' %>
+
+<div id="menu" class="dropdown">
+  <a href='#' class="dropdown-toggle" data-toggle="dropdown">
+    <%=fa_icon("bars 2x")%>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right">
+    <li><%= link_to "ログイン", "#" %></li>
+    <li><%= link_to "登録", "#" %></li>
+    <li><%= link_to "設定", "#" %></li>
+    <li><%= link_to "お問合わせ", "#" %></li>
+    <li><%= link_to "プロフィール", about_path %></li>
+    <li><%= link_to "利用規約", rules_path %></li>
+  </ul>
+</div>
+
+<div id="search">
+  <div><%=fa_icon("search 2x")%></div>
+</div>
+
+<div class="content">検索機能は現在開発中です。</div>
+
+<nav>
+  <ul>
+    <li><%=link_to "人生", '#' %></li>
+    <li><%=link_to "プログラミング", '#' %></li>
+    <li><%=link_to "趣味", '#' %></li>
+    <li><%=link_to "ツール", '#' %></li>
+    <li><%=link_to "その他", '#' %></li>
+  </ul>
+</nav>

@@ -1,0 +1,297 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+// color difinition
+$white: #fff;
+$title: #70ad47;
+$back: #b0c573;
+$current: #94b327;
+$visited: #69734c;
+
+
+// parameter difinision
+
+// universal　全体
+body{
+  margin: 0;
+  padding: 0;
+}
+section{
+  overflow: auto;
+}
+// textarea{
+//   resize: vertical;
+// }
+// .center{
+//   text-align: center;
+//   h1{
+//     margin-bottom: 10px;
+//   }
+// }
+img{vertical-align: bottom;}
+#top{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+//typography 文字
+h1, h2, h3, h4, h5, h6{
+  line-height: 1;
+  border-bottom: 1px solid $title;
+}
+h1{
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+h2, h3{
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: normal;
+  color: $gray-light;
+}
+p{
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+a{color: #333;}
+a:visited{color: $visited;}
+a:hover {
+  color: $current;
+  font-weight: bold;
+  text-decoration: none;
+}
+a img{transition: opacity 0.2s linear;}
+a:hover img{opacity: 0.7;}
+
+
+// header
+header{
+  width: 980px;
+  margin: 0 auto;
+}
+#logo{
+  float:left;
+}
+#search{
+  float: right;
+  margin: 10px 30px 10px 0px;
+}
+.content{
+  display: none;
+  width: 980px;
+  clear: both;
+  overflow: hidden;
+  margin: 16px auto;
+}
+.open .content{
+  display: block;
+}
+#menu{
+  float: right;
+  margin: 10px 30px 10px 0px;
+}
+nav{
+  width: 980px;
+  clear: both;
+  overflow: hidden;
+  margin: 16px auto;
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+      width: 195px;
+      float: left;
+      margin-right: 1px;
+      text-align: center;
+      a{
+        display: block;
+        padding: 16px;
+        background-color: $back;
+        color: $white;
+        text-decoration: none;
+        transition: background-color 0.2s linear;
+      }
+      a:hover{
+        color: $white;
+        background-color: $current;
+      }
+    }
+  }
+}
+
+// footer
+footer{
+  width: 980px;
+  background-color: #352b23;
+  text-align: center;
+  margin: 0 auto;
+  small{
+    display: block;
+    padding: 8px 0;
+    color: $white;
+  }
+}
+
+// mainbar
+#wrapper{
+  width:980px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#main{
+  width: 730px;
+  float: left;
+  #sort{
+    float:right;
+    padding: 5px 20px 5px 20px;
+    border: solid 1px $title;
+    border-radius: 10px;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+      margin: 2.5px;
+    }
+  }
+  #top{
+    float: right;
+  }
+}
+
+// sidebar
+#sidebar{
+  width: 220px;
+  float: right;
+  h2{
+    text-align: center;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    li{
+      margin: 2.5px;
+    }
+  }
+  #popular{
+    margin: 10px;
+    margin-bottom: 30px;
+    border: solid 1px $title;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  #tags{
+    margin: 10px;
+    margin-bottom: 30px;
+    border: solid 1px $title;
+    border-radius: 10px;
+    padding: 5px;
+    .tags{
+      overflow: hidden;
+      border-bottom: solid 1px $title;
+      a{
+        display: block;
+        float: left;
+        padding: 10px;
+        padding-right: 60px;
+      }
+    }
+  }
+}
+
+
+//rules
+#rules{
+  clear: both;
+  width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+  #signiture{
+    text-align: right;
+  }
+
+}
+
+
+
+
+
+// responsive-design
+@media screen and(max-width: 767px) {
+  //image
+  img{
+    max-width: 100%;
+  }
+
+  // Layout
+  header,
+  nav,
+  #sidebar,
+  #wrapper,
+  footer{
+    width: 100%;
+  }
+  header h1{
+    float: none;
+    text-align: center;
+  }
+  header h1 img {
+    width: 50%;
+  }
+  header #header_contact {
+    display: none;
+  }
+  /* ナビゲーション */
+  nav ul li {
+    width: 50%;
+    padding: 0.5px;
+    margin: 0;
+    box-sizing: border-box;
+    a {
+      margin: 0;
+    }
+  }
+  nav ul li:last-child {
+    width: 100%;
+  }
+  /* メイン部分 */
+  #main {
+    width: 100%;
+    padding: 0 5%;
+    box-sizing: border-box;
+  }
+  #main figure {
+    text-align: center;
+  }
+  /* トップページパーツ */
+  #main_visual {
+    width: 100%;
+    height: auto;
+  }
+  #point figure {
+    float: none;
+    margin: 0 0 11px 0;
+  }
+  /* サイドバー */
+  #side_banner ul li {
+    text-align: center;
+    margin: 11px auto;
+  }
+  #side_contact address img {
+    width: 14px;
+    height: 20px;
+  }
+
+
+}
+

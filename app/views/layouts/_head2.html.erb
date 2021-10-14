@@ -1,0 +1,21 @@
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="かめじろうのブログ【かめブロ】人生についてと旅行やサッカーなどの趣味について、さらに現在勉強中のプログラミングについてのブログです。日々の日常や学んだことの備忘録です。">
+
+<%# ファビコンを設定 assets/images/を参照%>
+<%=favicon_link_tag('favicon.ico') %>
+<%# アップルタッチアイコンを設定 %>
+<%=favicon_link_tag('apple-touch-icon-180x180.png',{
+  :rel => 'apple-touch-icon',
+  :sizes => '180x180',
+  :type => 'image/png'}) %>
+
+<%# クロスサイトリクエストフォージェリ対策 %>
+<%= csrf_meta_tags %>
+<%# クロスサイトスクリプティング対策 %>
+<%= csp_meta_tag %>
+
+<%# スタイルシートとスクリプトの読み込み %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
