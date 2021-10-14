@@ -34,7 +34,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '1.4.5', require: false
+# 
+gem 'rexml', '3.2.4'
+# User font-awesome
+gem 'font-awesome-rails'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

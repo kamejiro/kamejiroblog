@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Kamejiroblog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<html lang="ja">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <%= render 'layouts/head' %>
+    <title>かめじろうのブログ</title>
+    <%= render 'layouts/head2' %>
   </head>
 
   <body>
+    <style>
+      body{
+        background-image: url(<%=asset_path "background.png" %>);
+      }
+    </style>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    
     <%= yield %>
+    
+    <div id="top">
+      <a href="#"><%=fa_icon("chevron-circle-up 2x") %></a>
+    </div>
+    
+    <%= render 'layouts/footer' %>
   </body>
 </html>
