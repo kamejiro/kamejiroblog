@@ -17,7 +17,7 @@ gem 'bcrypt', '3.1.16'
 # Use random dammy data like bot
 gem 'faker', '2.1.2'
 # Use pagination
-gem 'will_paginate', '3.1.8'
+gem 'will_paginate', '~> 3.3'
 # Use comfortable css and sass
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.4.1'
@@ -37,8 +37,12 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '1.4.5', require: false
 # 
 gem 'rexml', '3.2.4'
-# User font-awesome
+# Use font-awesome
 gem 'font-awesome-rails'
+# Use access count
+gem 'impressionist',
+  git: 'git://github.com/charlotte-ruby/impressionist.git',
+  ref: '46a582ff8cd3496da64f174b30b91f9d97e86643'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

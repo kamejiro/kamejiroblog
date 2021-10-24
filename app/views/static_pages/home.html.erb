@@ -12,40 +12,11 @@
       </ul>
     </div>
 
-    <div class="pagination">ページネーション</div>
-    <ul>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-    </ul>
-    <div class="pagination">ページネーション</div>
+    <ul id="article_index"><%= render @feed_items %></ul>
+    
+    <%= will_paginate @feed_items, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 1 %>
   </div>
 
-  <div id="sidebar">
-    <section id="popular">
-      <h2>人気記事</h2>
-      <ul>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      </ul>
-    </section>
-    <section id="tags">
-      <h2>タグ</h2>
-      <ul>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      </ul>
-    </section>
-    <section id="adcense">
-      <h2>アドセンス</h2>
-    </section>
-  </div>
+  <%=render 'layouts/sidebar'%>
 </div>
+

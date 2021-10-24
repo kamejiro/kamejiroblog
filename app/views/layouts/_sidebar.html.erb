@@ -1,0 +1,23 @@
+<div id="sidebar">
+  <section id="popular">
+    <h2>人気記事</h2>
+    <ul>
+      <% @rank_items.each do |t| %>
+        <li class="popular"><%=link_to t.title, t %></li>
+      <% end %>
+    </ul>
+  </section>
+  <section id="tags">
+    <h2>タグ</h2>
+    <ul>
+      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
+      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
+      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
+      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
+      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
+    </ul>
+  </section>
+  <section id="adcense">
+    <h2>アドセンス</h2>
+  </section>
+</div>

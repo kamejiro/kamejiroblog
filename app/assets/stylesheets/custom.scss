@@ -16,6 +16,7 @@ $visited: #69734c;
 body{
   margin: 0;
   padding: 0;
+  font-family: "Hiragino maru Gothic ProN W4", "Hiragino Kaku Gothic Pro","Hiragino Sans", "arial", "Meiryo", "MS PGothic", sans-serif!important;
 }
 section{
   overflow: auto;
@@ -42,22 +43,22 @@ h1, h2, h3, h4, h5, h6{
   border-bottom: 1px solid $title;
 }
 h1{
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: left;
 }
 h2, h3{
-  font-size: 1.2em;
+  font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: left;
   font-weight: normal;
-  color: $gray-light;
+  color: #333;
 }
 p{
-  font-size: 1.1em;
-  line-height: 1.7em;
+  font-size: 16px;
+  line-height: 24px;
 }
 a{color: #333;}
 a:visited{color: $visited;}
@@ -165,6 +166,18 @@ footer{
   #top{
     float: right;
   }
+  .pagination{
+    a{
+      background-color: $back;
+      color: $white;
+    }
+    a:hover{
+      background-color: $current;
+    }
+    .active a{
+      background-color: $visited;
+    }
+  }
 }
 
 // sidebar
@@ -173,12 +186,12 @@ footer{
   float: right;
   h2{
     text-align: center;
+    margin-bottom: 0;
   }
   ul{
     list-style: none;
     margin: 0;
     padding: 0;
-    text-align: center;
     li{
       margin: 2.5px;
     }
@@ -189,6 +202,13 @@ footer{
     border: solid 1px $title;
     border-radius: 10px;
     padding: 5px;
+    .popular{
+      border-bottom: solid 1px $title;
+      a{
+        display: block;
+        padding: 10px;
+      }
+    }
   }
   #tags{
     margin: 10px;
@@ -222,6 +242,38 @@ footer{
 
 }
 
+//article_index
+#article_index{
+  li{
+    clear: both;
+    width: 730px;
+    overflow: hidden;
+    padding: 20px 5px 20px 5px;
+    border-bottom: 1px solid $back;
+    display: block;
+
+    #article_text{
+      float: left;
+      width: 550px;
+      height: 100px;
+      #article_title{
+        font-size: 1.2em;
+        margin-bottom: 15px;
+      }
+      #article_date{
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+    }
+    #article_image{
+      float: right;
+      width: 150px;
+      height: 150px;
+      border: 1px solid;
+    }
+  }
+}
+
 
 
 
@@ -238,6 +290,7 @@ footer{
   nav,
   #sidebar,
   #wrapper,
+  #main,
   footer{
     width: 100%;
   }
@@ -247,9 +300,6 @@ footer{
   }
   header h1 img {
     width: 50%;
-  }
-  header #header_contact {
-    display: none;
   }
   /* ナビゲーション */
   nav ul li {
@@ -273,25 +323,5 @@ footer{
   #main figure {
     text-align: center;
   }
-  /* トップページパーツ */
-  #main_visual {
-    width: 100%;
-    height: auto;
-  }
-  #point figure {
-    float: none;
-    margin: 0 0 11px 0;
-  }
-  /* サイドバー */
-  #side_banner ul li {
-    text-align: center;
-    margin: 11px auto;
-  }
-  #side_contact address img {
-    width: 14px;
-    height: 20px;
-  }
-
-
 }
 

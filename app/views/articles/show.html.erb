@@ -1,0 +1,20 @@
+<% provide(:title, @article.title)%>
+
+<div id="wrapper">
+  <%= render 'layouts/breadcrumb' %>
+  <div id="main">
+    <h1><%= @article.title %></h1>
+
+    <small>
+      <%= @article.created_at.strftime('%Y/%m/%d') %>に投稿
+      <% if (@article.created_at != @article.updated_at) %>
+        <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+        <%=@article.updated_at.strftime('%Y/%m/%d')%>に更新
+      <% end %>
+    </small>
+
+    <%=content_tag :div, @article.content, {}, false %>
+  </div>
+
+  <%= render 'layouts/sidebar'%>
+</div>

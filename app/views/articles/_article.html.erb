@@ -1,0 +1,20 @@
+<li>
+  <%=link_to article do %>
+    <div id="article_text">
+      <div id="article_title"><%=article.title%></div>
+
+      <div id="article_date">
+        <%=article.created_at.strftime('%Y/%m/%d')%>
+        <% if (article.created_at != article.updated_at) %>
+          <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+          <%=article.updated_at.strftime('%Y/%m/%d')%>
+        <% end %>
+      </div>
+        
+
+      <div id="article_abstract"><%=article.abstract%></div>
+    </div>
+
+    <div id="article_image">画像です</div>
+  <% end %>
+</li>
