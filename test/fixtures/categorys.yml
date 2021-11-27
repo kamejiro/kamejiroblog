@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 0
+  category: "人生"
+
+two:
+  id: 1
+  category: "プログラミング"
+
+three:
+  id: 2
+  category: "趣味"
+
+four:
+  id: 3
+  category: "ツール"
+
+five:
+  id: 4
+  category: "サッカー"

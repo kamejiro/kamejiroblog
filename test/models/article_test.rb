@@ -2,7 +2,8 @@ require "test_helper"
 
 class ArticleTest < ActiveSupport::TestCase
   def setup
-    @article=Article.new(title: "Example article", content: "content")
+    @category=categorys(:one)
+    @article=@category.articles.build(title: "Example article", content: "content")
   end
 
   test "title should be present" do

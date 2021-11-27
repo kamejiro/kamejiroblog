@@ -5,13 +5,21 @@ one:
   title: "テストタイトルです。"
   content: "テストの内容です。"
   abstract: "テストの概要です。"
+  category_id: 0
+
+another_category:
+  id: 32
+  title: "異なるカテゴリーのタイトルです。"
+  content: "異なるカテゴリーの内容です。"
+  abstract: "異なるカテゴリーの概要です。"
+  category_id: 1
 
 popular:
-  id: 32
+  id: 33
   title: "人気記事のテストタイトルです。"
   content: "人気記事のテストの内容です。"
   abstract: "人気記事のテストの概要です。"
-  impressions_count: 10
+  category_id: 0
 
 <% 30.times do |n| %>
 article_<%= n %>:
@@ -19,4 +27,5 @@ article_<%= n %>:
   title: <%= "title#{n}です" %>
   content: <%= "article#{n}の内容である" %>
   abstract: <%= "article#{n}の概要である" %>
+  category_id: 1
 <% end %>

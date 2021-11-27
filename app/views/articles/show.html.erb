@@ -13,7 +13,8 @@
       <% end %>
     </small>
 
-    <%=content_tag :div, @article.content, {}, false %>
+    <%# =content_tag :div, @article.content, {}, false %>
+    <%=@article.content.html_safe %>
   </div>
 
   <%= render 'layouts/sidebar'%>

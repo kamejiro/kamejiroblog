@@ -15,4 +15,9 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get rules_path
     assert_response :success
   end
+
+  test "should get others" do
+    get others_path
+    assert_response :success
+  end
 end

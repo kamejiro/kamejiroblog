@@ -3,7 +3,6 @@ require "test_helper"
 class ArticleFeedTest < ActionDispatch::IntegrationTest
   def setup
     @articleone=articles(:one)
-    @articlepopular=articles(:popular)
   end
 
   #article feed
@@ -21,9 +20,5 @@ class ArticleFeedTest < ActionDispatch::IntegrationTest
   end
 
   # sidebar test
-  test "sidebar should include popular link" do
-    get root_path
-    assert_select 'a[href=?]', article_path(@articlepopular)
-    assert_match @articlepopular.title.to_s, response.body
-  end
+
 end

@@ -22,10 +22,9 @@
 
 <nav>
   <ul>
-    <li><%=link_to "人生", '#' %></li>
-    <li><%=link_to "プログラミング", '#' %></li>
-    <li><%=link_to "趣味", '#' %></li>
-    <li><%=link_to "ツール", '#' %></li>
-    <li><%=link_to "その他", '#' %></li>
+    <% @nav.each do |c| %>
+      <li><%=link_to c.category, c %></li>
+    <% end %>
+    <li><%=link_to "その他", others_path %></li>
   </ul>
 </nav>
