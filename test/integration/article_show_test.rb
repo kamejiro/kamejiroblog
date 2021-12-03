@@ -12,4 +12,10 @@ class ArticleShowTest < ActionDispatch::IntegrationTest
     assert_match @article.created_at.strftime('%Y/%m/%d').to_s, response.body
     assert_match @article.content.to_s, response.body
   end
+
+  # test "should be inclement if get request" do
+  #   assert_difference '@article.impressions_count', 1 do
+  #     get article_path(@article)
+  #   end
+  # end
 end

@@ -5,6 +5,9 @@ class Article < ApplicationRecord
                     length: {maximum: 100}
   validates :content, presence: true, uniqueness: true
   validates :category_id, presence: true
-  is_impressionable counter_cache: true
+
+  def increment_impression
+    self.impressions_count += 1
+  end
 
 end

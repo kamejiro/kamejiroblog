@@ -4,5 +4,6 @@ class ArticlesController < ApplicationController
     @nav=Category.take(4)
     @article=Article.find(params[:id])
     @rank_items=Article.order(impressions_count: 'DESC').take(5)
+    @article.increment_impression
   end
 end
