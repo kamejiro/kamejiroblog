@@ -21,15 +21,15 @@ body{
 section{
   overflow: auto;
 }
-// textarea{
-//   resize: vertical;
-// }
-// .center{
-//   text-align: center;
-//   h1{
-//     margin-bottom: 10px;
-//   }
-// }
+textarea{
+  resize: vertical;
+}
+.center{
+  text-align: center;
+  h1{
+    margin-bottom: 10px;
+  }
+}
 img{vertical-align: bottom;}
 #top{
   position: fixed;
@@ -275,8 +275,15 @@ footer{
 }
 
 
-
-
+//article_form
+input, textarea, select {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+select{
+  height: 35px;
+}
 
 // responsive-design
 @media screen and(max-width: 767px) {

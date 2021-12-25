@@ -39,10 +39,8 @@ gem 'bootsnap', '1.4.5', require: false
 gem 'rexml', '3.2.4'
 # Use font-awesome
 gem 'font-awesome-rails'
-# Use access count
-gem 'impressionist',
-  git: 'git://github.com/charlotte-ruby/impressionist.git',
-  ref: '46a582ff8cd3496da64f174b30b91f9d97e86643'
+# Use byebug
+gem 'byebug'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

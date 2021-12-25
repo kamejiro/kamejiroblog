@@ -26,4 +26,9 @@ class ArticleTest < ActiveSupport::TestCase
     @article.title="a"*101
     assert_not @article.valid?
   end
+
+  test "abstract should be present" do
+    @article.abstract=""
+    assert_not @article.valid?
+  end
 end
