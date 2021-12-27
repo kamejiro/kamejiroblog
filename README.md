@@ -1,13 +1,8 @@
-# Ruby on Rails ブログアプリケーション
-
-これは、次の教材を参考に作られたアプリケーションです。
-[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-（第6版）
-[Michael Hartl](https://www.michaelhartl.com/) 著
-
 ## リンク
 
 https://www.kamejiroblog.com
+
+画像を貼る
 
 ## サイト概要
 
@@ -23,3 +18,8 @@ https://www.kamejiroblog.com
 ## 機能一覧
 
 ・記事一覧表示機能
+・記事詳細表示機能
+・カテゴリー機能
+・記事投稿機能
+・記事削除機能
+・ページネーション機能

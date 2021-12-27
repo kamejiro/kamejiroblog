@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get '/others', to: 'static_pages#others'
   get '/new', to: 'articles#new'
   post '/create', to: 'articles#create'
-  resources :articles, only: [:show, :create, :destroy]
+  resources :articles, only: [:show, :create, :destroy, :index]
   resources :categorys, only: [:show]
 end

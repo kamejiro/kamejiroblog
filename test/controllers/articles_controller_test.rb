@@ -2,6 +2,10 @@ require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
+  def setup
+    @article= articles(:one)
+  end
+
   test "should get new" do
     get new_path
     assert_response :success
@@ -54,6 +58,15 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       }
     end
     assert_redirected_to root_url
+    assert_not flash.empty?
+  end
+
+  test "valid delete article" do
+    get articles_path
+    assert_difference 'Article.count', -1 do
+      delete article_path(@article)
+    end
+    assert_redirected_to articles_url
     assert_not flash.empty?
   end
 end

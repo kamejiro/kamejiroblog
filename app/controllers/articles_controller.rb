@@ -31,6 +31,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def index
+    @nav=Category.take(4)
+    @articles=Article.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
+  end
+
+  def destroy
+    @article=Article.find(params[:id]).destroy
+    flash[:success]="User deleted"
+    redirect_to articles_url
+  end
+
 
   private
   def article_params
