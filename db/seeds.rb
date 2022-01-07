@@ -94,3 +94,19 @@ n=1
     n=n+1
   end
 end
+
+User.create!(
+  name: "kamejiro",
+  email: "example@gmail.com",
+  password: "foobar",
+  password_confirmation: "foobar",
+  admin: true
+)
+
+User.create!(
+  name: "nonadmin",
+  email: "example2@gmail.com",
+  password: "foobar",
+  password_confirmation: "foobar",
+  admin: false
+)

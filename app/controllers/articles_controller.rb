@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
       @article=@category.articles.build(article_params)
       if @article.save
         #フラッシュとリダイレクト
-        flash[:success]="article created"
+        flash[:success]="Article created"
         redirect_to root_url
       else
         render 'new'
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article=Article.find(params[:id]).destroy
-    flash[:success]="User deleted"
+    flash[:success]="Article deleted"
     redirect_to articles_url
   end
 

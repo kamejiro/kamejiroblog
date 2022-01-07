@@ -12,8 +12,7 @@
         <%=@article.updated_at.strftime('%Y/%m/%d')%>に更新
       <% end %>
     </small>
-
-    <%# =content_tag :div, @article.content, {}, false %>
+    
     <%=@article.content.html_safe %>
   </div>
 

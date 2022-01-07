@@ -2,6 +2,7 @@ require "test_helper"
 
 class LayoutTest < ActionDispatch::IntegrationTest
   def setup
+    @user=users(:one)
     @category=categorys(:one)
   end
   test "layout links without login" do
@@ -12,5 +13,8 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", others_path
     assert_select "a[href=?]", new_path
     assert_select "a[href=?]", category_path(@category), count: 2
+    assert_select "a[href=?]", signup_path
+    assert_select "a[href=?]", users_path
+    assert_select "a[href=?]", edit_users_path
   end
 end

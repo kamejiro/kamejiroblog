@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @user=User.find(1)
     @nav=Category.take(4)
     @feed_items=Article.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
     @rank_items=Article.order(impressions_count: 'DESC').take(5)

@@ -274,6 +274,17 @@ footer{
   }
 }
 
+//user_index
+#user_index{
+  li{
+    clear: both;
+    width: 730px;
+    overflow: hidden;
+    padding: 20px 5px 20px 5px;
+    border-bottom: 1px solid $back;
+    display: block;
+  }
+}
 
 //article_form
 input, textarea, select {
@@ -284,6 +295,9 @@ input, textarea, select {
 select{
   height: 35px;
 }
+
+
+
 
 // responsive-design
 @media screen and(max-width: 767px) {

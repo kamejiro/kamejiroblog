@@ -1,0 +1,17 @@
+<div id="wrapper">
+  <div id="main">
+    <h1>ユーザー一覧</h1>
+    <%= render 'layouts/sortbar' %>
+
+    <ul id="user_index">
+      <% @users.each do |user| %>
+        <li>
+          <%=link_to user.name, user%>
+          | <%=link_to "削除", user, method: :delete, data: {confirm: "You sure?"}%>
+        </li>
+      <%end%>
+    </ul>
+    
+    <%= will_paginate @users, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 1 %>
+  </div>
+</div>
