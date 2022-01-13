@@ -6,8 +6,7 @@ class UserDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test "user delete link" do
-    get root_path
-    assert_select "a[href=?]", users_path
+    login_test2(@user)
     get users_path
     assert_select "a[href=?]", user_path(@user)
   end

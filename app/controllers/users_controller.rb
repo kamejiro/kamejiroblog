@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_login, only: [:destroy, :index, :edit, :update]
 
   def signup
     @nav=Category.take(4)
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
     @user=User.new(user_params)
     if @user.save
       #フラッシュとリダイレクト
+      login @user
       flash[:success]="user created"
       redirect_to root_url
     else
@@ -25,7 +27,7 @@ class UsersController < ApplicationController
 
   def index
     @nav=Category.take(4)
-    @user=User.find(1)#ログイン機能後消す
+    @user=current_user
     @users=User.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
   end
 

@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get '/others', to: 'static_pages#others'
   get '/new', to: 'articles#new'
   get '/signup', to: 'users#signup'
-  post '/create', to: 'articles#create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :articles, only: [:show, :create, :destroy, :index]
   resources :categorys, only: [:show]
   resources :users, only: [:create, :destroy, :index, :edit, :update]

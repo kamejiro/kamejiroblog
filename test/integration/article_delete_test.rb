@@ -2,12 +2,12 @@ require "test_helper"
 
 class ArticleDeleteTest < ActionDispatch::IntegrationTest
   def setup
+    @user=users(:one)
     @article=articles(:one)
   end
 
   test "article delete link" do
-    get root_path
-    assert_select "a[href=?]", articles_path
+    login_test2(@user)
     get articles_path
     assert_select "a[href=?]", article_path(@article)
   end

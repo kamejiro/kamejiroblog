@@ -12,4 +12,27 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def is_login_test?
+    !session[:user_id].nil?
+  end
+
+  def login_test(user, password: 'password')
+    post login_path params: {
+      session:{
+        email: user.email,
+        password: password
+      }
+    }
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  def login_test2(user, password: 'password')
+    post login_path params: {
+      session:{
+        email: user.email,
+        password: password
+      }
+    }
+  end
 end

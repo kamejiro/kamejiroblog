@@ -1,34 +1,32 @@
 <%= link_to image_tag("title.png", size: "400x70"), root_path, id:'logo' %>
 
-<% if !@user.nil? %>
-  <% if !@user.name.nil? %>
-    <div id="menu" class="dropdown">
-      <a href='#' class="dropdown-toggle" data-toggle="dropdown">
-        <%= @user.name %>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-right">
-        <li><%= link_to "ログアウト", "#" %></li>
-        <li><%= link_to "ユーザーの編集", edit_user_path(@user) %></li>
-        <li><%= link_to "ユーザーの削除", users_path %></li>
-        <li><%= link_to "記事の投稿", new_path %></li>
-        <li><%= link_to "記事の削除", articles_path %></li>
-      </ul>
-    </div>
-  <%end%>
-<%end%>
-
-<div id="menu" class="dropdown">
-  <a href='#' class="dropdown-toggle" data-toggle="dropdown">
-    <%=fa_icon("bars 2x")%>
-  </a>
-  <ul class="dropdown-menu dropdown-menu-right">
-    <li><%= link_to "ログイン", "#" %></li>
-    <li><%= link_to "登録", signup_path %></li>
-    <li><%= link_to "管理人プロフィール", about_path %></li>
-    <li><%= link_to "利用規約", rules_path %></li>
-    <li><%= link_to "お問合わせ", "#" %></li>
-  </ul>
-</div>
+<% if is_login? %>
+  <div id="menu" class="dropdown">
+    <a href='#' id="header-name" class="dropdown-toggle" data-toggle="dropdown">
+      <%= @user.name %>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      <li><%= link_to "ユーザーの編集", edit_user_path(@user) %></li>
+      <li><%= link_to "ユーザーの削除", users_path %></li>
+      <li><%= link_to "記事の投稿", new_path %></li>
+      <li><%= link_to "記事の削除", articles_path %></li>
+    </ul>
+  </div>
+<% else %>
+  <div id="menu" class="dropdown">
+    <a href='#' class="dropdown-toggle" data-toggle="dropdown">
+      <%=fa_icon("bars 2x")%>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><%= link_to "ログイン", login_path %></li>
+      <li><%= link_to "登録", signup_path %></li>
+      <li><%= link_to "管理人プロフィール", about_path %></li>
+      <li><%= link_to "利用規約", rules_path %></li>
+      <li><%= link_to "お問合わせ", "#" %></li>
+    </ul>
+  </div>
+<% end %>
 
 <div id="search">
   <div><%=fa_icon("search 2x")%></div>

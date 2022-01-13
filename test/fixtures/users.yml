@@ -4,5 +4,5 @@ one:
   id: 1
   name: "testuser"
   email: "example@gmail.com"
-  password_digest: "password"
+  password_digest: <%= User.digest('password')%>
   admin: true

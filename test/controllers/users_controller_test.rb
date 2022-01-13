@@ -22,7 +22,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         }
       }
     end
-    assert_template 'users/new'
+    assert_template 'users/signup'
     assert_select 'div#error_explanation'
     assert_select 'div.alert'
     assert_select 'div.alert-danger'
@@ -45,11 +45,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "should get index" do
+    login_test(@user)
     get users_path
     assert_response :success
   end
 
+  test "invalid delete user without login" do
+    get users_path
+    assert_not flash.empty?
+    assert_redirected_to login_url
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+  end
+
   test "valid delete user" do
+    login_test(@user)
     get users_path
     assert_difference 'User.count', -1 do
       delete user_path(@user)
@@ -58,8 +69,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
   end
 
+  test "invalid edit user without login" do
+    get edit_user_path(@user)
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end
   
   test "should get edit" do
+    login_test(@user)
     get edit_user_path(@user)
     assert_response :success
   end
@@ -71,7 +88,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   #   assert_template 'users/edit'
   #   assert_select "div.alert", "The form contains 4 errors"
   # end
-
 
   # test "valid edit user" do
   #   get edit_user_path(@user)

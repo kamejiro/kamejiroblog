@@ -1,19 +1,23 @@
 class ArticlesController < ApplicationController
+  before_action :check_login, only: [:create, :destroy, :index, :new]
 
   def show
     @nav=Category.take(4)
+    @user=current_user
     @article=Article.find(params[:id])
     @rank_items=Article.order(impressions_count: 'DESC').take(5)
     @article.increment_impression
   end
 
   def new
+    @user=current_user
     @nav=Category.take(4)
     @categorys=Category.all
     @article=Article.new
   end
 
   def create
+    @user=current_user
     @nav=Category.take(4)
     @categorys=Category.all
     if article_params[:category_id] != ""
@@ -33,6 +37,7 @@ class ArticlesController < ApplicationController
 
   def index
     @nav=Category.take(4)
+    @user=current_user
     @articles=Article.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
   end
 
