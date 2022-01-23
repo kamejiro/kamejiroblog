@@ -26,7 +26,6 @@ Category.create!(
   id: 4,
   category: "サッカー")
 
-
 categoryTest=Category.last
 categoryTest.articles.create!(title: "ネーションズリーグ決勝2021　フランス対スペインを見て",
                 abstract: "10月11日（日本時間何時）にネーションズリーグ2021決勝が行われ、フランスが2対1でスペインを破り今大会初の優勝を果たした。ベンゼマを筆頭とする豪華スター陣を有するフランスと若返りを測るスペインのビックマッチを見た感想を述べる。",

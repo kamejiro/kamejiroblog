@@ -4,6 +4,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @user=users(:one)
+    @user2=users(:two)
     @article= articles(:one)
   end
 
@@ -26,10 +27,26 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Article.count' do
       post articles_path params: {
         article: {
-          title: "",
-          category_id: "0",
-          abstract: "",
-          content: ""
+          title: "testarticletitle",
+          category_id: "1",
+          abstract: "test_abstract",
+          content: "test_content"
+        }
+      }
+    end
+  end
+
+  test "invalid post article without admin" do
+    login_test(@user2)
+    get new_path
+    assert_redirected_to root_url
+    assert_no_difference 'Article.count' do
+      post articles_path params: {
+        article: {
+          title: "testarticletitle",
+          category_id: "1",
+          abstract: "test_abstract",
+          content: "test_content"
         }
       }
     end
@@ -92,6 +109,15 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_path
     assert_not flash.empty?
     assert_redirected_to login_url
+    assert_no_difference 'Article.count' do
+      delete article_path(@article)
+    end
+  end
+
+  test "invalid delete user without admin" do
+    login_test(@user2)
+    get articles_path
+    assert_redirected_to root_url
     assert_no_difference 'Article.count' do
       delete article_path(@article)
     end

@@ -6,3 +6,10 @@ one:
   email: "example@gmail.com"
   password_digest: <%= User.digest('password')%>
   admin: true
+
+two:
+  id: 2
+  name: "nonadmin"
+  email: "nonadmin@gmail.com"
+  password_digest: <%= User.digest('password')%>
+  admin: false

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :check_login, only: [:create, :destroy, :index, :new]
-
+  before_action :check_admin, only: [:create, :destroy, :index, :new]
+  
   def show
     @nav=Category.take(4)
     @user=current_user

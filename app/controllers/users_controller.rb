@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_login, only: [:destroy, :index, :edit, :update]
+  before_action :check_admin, only: [:destroy, :index]
 
   def signup
     @nav=Category.take(4)

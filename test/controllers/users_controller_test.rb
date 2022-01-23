@@ -3,6 +3,7 @@ require "test_helper"
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user=users(:one)
+    @user2=users(:two)
   end
 
   test "should get signup" do
@@ -59,6 +60,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "invalid delete user without admin" do
+    login_test(@user2)
+    get users_path
+    assert_redirected_to root_url
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to root_url
+  end
+
   test "valid delete user" do
     login_test(@user)
     get users_path
@@ -79,6 +90,26 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     login_test(@user)
     get edit_user_path(@user)
     assert_response :success
+  end
+
+  test "should not allow edit admin" do
+    get signup_path
+    assert_difference 'User.count', 1 do
+      post users_path params: {
+        user: {
+          name: "testuser3",
+          email: "test@example.com",
+          password: "foobar",
+          password_confirmation: "foobar",
+          admin: true
+        }
+      }
+    end
+    assert_redirected_to root_url
+    assert_not flash.empty?
+    @user3=User.last
+    assert @user3.name=="testuser3"
+    assert_not @user3.admin?
   end
 
   # test "invalid edit user" do
