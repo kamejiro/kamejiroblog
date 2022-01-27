@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :check_login, only: [:create, :destroy, :index, :new]
-  before_action :check_admin, only: [:create, :destroy, :index, :new]
+  before_action :check_login, only: [:create, :destroy, :index, :new, :edit, :update]
+  before_action :check_admin, only: [:create, :destroy, :index, :new, :edit, :update]
   
   def show
     @nav=Category.take(4)
@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
     @user=current_user
     @nav=Category.take(4)
     @categorys=Category.all
+    @category=Category.first
     @article=Article.new
   end
 
@@ -48,6 +49,28 @@ class ArticlesController < ApplicationController
     redirect_to articles_url
   end
 
+  def edit
+    @user=current_user
+    @nav=Category.take(4)
+    @categorys=Category.all
+    @article=Article.find(params[:id])
+    @category=Category.find(@article.category_id)
+  end
+
+  def update
+    @user=current_user
+    @nav=Category.take(4)
+    @categorys=Category.all
+    @category=Category.find(article_params[:category_id])
+    @article=@category.articles.find(params[:id])
+    if @article.update(article_params)
+      #フラッシュとリダイレクト
+      flash[:success]="article updated"
+      redirect_to root_url
+    else
+      render 'edit'
+    end
+  end
 
   private
   def article_params

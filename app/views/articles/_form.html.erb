@@ -1,0 +1,21 @@
+<%=form_with(model: @article, local:true) do |f|%>
+  <%= render 'layouts/error_messages', object: f.object %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :category_id %>
+  <%= f.select(:category_id, class: 'form-control') do %>
+    <%=content_tag(:option,  @category.category, value: @article.category_id)%>
+    <%@categorys.each do |c|%>
+      <%=content_tag(:option, c.category, value: c.id)%>
+    <%end%>
+  <%end%>
+
+  <%= f.label :abstract %>
+  <%= f.text_field :abstract, class: 'form-control' %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, class: 'form-control', size: "24x100" %>
+  
+  <%= f.submit "投稿", class: "btn btn-primary" %>
+<% end %>

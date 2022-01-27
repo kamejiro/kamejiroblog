@@ -132,4 +132,16 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to articles_url
     assert_not flash.empty?
   end
+
+  test "invalid edit user without login" do
+    get edit_article_path(@article)
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end
+  
+  test "should get edit" do
+    login_test(@user)
+    get edit_article_path(@article)
+    assert_response :success
+  end
 end
