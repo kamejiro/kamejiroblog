@@ -3,32 +3,23 @@
     <%= render 'layouts/breadcrumb' %>
   <div id="main">
     <h2>管理人について</h2>
-    <p>人生楽しんで生きることを目的としています。</p>
+    <h3>プロフィール</h3>
+    <%= image_tag("icon.jpg", size: "100x100", id:'icon') %>
+    <div id="profile">
+      <p>かめじろう。<br/>
+      大阪府生まれのフリーター。<br/>
+      プログラマーを目指して日々勉強しています。<br/>
+      UverWorldやRealMadrid、ジョジョが好きです。</p>
+    </div>
+    
+      <h3>本ブログについて</h3>
+      <p>webサービス開発の勉強の一貫として始めました。自分の考え方や過去の経験、趣味などを少しでも共感してもらえたらという思いで運営しています。</p>
+
+    <h3>SNS</h3>
+    <p>Twitterをメインに活用しています。<br/>
+    <a href="https://twitter.com/kamejiro_uwrm">かめじろうさんをフォロー</a>
+    </p>
   </div>
 
-  <div id="sidebar">
-    <section id="popular">
-      <h2>人気記事</h2>
-      <ul>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      <li><%=link_to "タイトルが入ります", '#' %></li>
-      </ul>
-    </section>
-    <section id="tags">
-      <h2>タグ</h2>
-      <ul>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      <li class="tags"><%=link_to "# タグが入ります", '#' %></li>
-      </ul>
-    </section>
-    <section id="adcense">
-      <h2>アドセンス</h2>
-    </section>
-  </div>
+  <%=render 'layouts/sidebar'%>
 </div>

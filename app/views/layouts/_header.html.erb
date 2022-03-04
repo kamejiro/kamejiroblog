@@ -23,7 +23,7 @@
       <li><%= link_to "ユーザーの編集", edit_user_path(@user) %></li>
       <li><%= link_to "管理人プロフィール", about_path %></li>
       <li><%= link_to "利用規約", rules_path %></li>
-      <li><%= link_to "お問合わせ", "#" %></li>
+      <li><%= link_to "お問合わせ", contact_path %></li>
     </ul>
   </div>
 <% else %>
@@ -36,7 +36,7 @@
       <li><%= link_to "登録", signup_path %></li>
       <li><%= link_to "管理人プロフィール", about_path %></li>
       <li><%= link_to "利用規約", rules_path %></li>
-      <li><%= link_to "お問合わせ", "#" %></li>
+      <li><%= link_to "お問合わせ", contact_path %></li>
     </ul>
   </div>
 <% end %>

@@ -5,15 +5,16 @@
   <div id="main">
     <h1><%= @article.title %></h1>
 
-    <small>
+    <div id="article_show_date">
       <%= @article.created_at.strftime('%Y/%m/%d') %>に投稿
       <% if (@article.created_at != @article.updated_at) %>
         <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
         <%=@article.updated_at.strftime('%Y/%m/%d')%>に更新
       <% end %>
-    </small>
-    
-    <%=@article.content.html_safe %>
+    </div>
+    <div id="article_content">
+      <%=@article.content.html_safe %>
+    </div>
   </div>
 
   <%= render 'layouts/sidebar'%>

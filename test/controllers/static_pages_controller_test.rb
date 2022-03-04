@@ -16,6 +16,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get contact" do
+    get contact_path
+    assert_response :success
+  end
+
   test "should get others" do
     get others_path
     assert_response :success

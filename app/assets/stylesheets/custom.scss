@@ -3,6 +3,21 @@
 @import "font-awesome";
 
 // color difinition
+// parameter difinision
+// universal　全体
+//typography 文字
+//header
+//footer
+//mainbar
+//sidebar
+//rules
+//article_index
+//user_index
+//article_form
+//article_show
+//responsive-design
+
+// color difinition
 $white: #fff;
 $title: #70ad47;
 $back: #b0c573;
@@ -16,7 +31,16 @@ $visited: #69734c;
 body{
   margin: 0;
   padding: 0;
-  font-family: "Hiragino maru Gothic ProN W4", "Hiragino Kaku Gothic Pro","Hiragino Sans", "arial", "Meiryo", "MS PGothic", sans-serif!important;
+  font-family: "Hiragino maru Gothic ProN W4", "Hiragino Kaku Gothic Pro","Hiragino Sans", "arial", "Meiryo", "MS PGothic", sans-serif!important;//フォントは
+  color: #333;//文字色は黒っぽいやつ
+  background-image: url("background.png");
+  #main{
+    margin-left: 10px;
+  }
+  #main2{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 section{
   overflow: auto;
@@ -36,29 +60,30 @@ img{vertical-align: bottom;}
   right: 20px;
   bottom: 20px;
 }
+h1, h2, h3, h4, h5, h6{
+  clear: both;
+}
 
 //typography 文字
 h1, h2, h3, h4, h5, h6{
-  line-height: 1;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.2;//フォントサイズの1.7倍
+  padding-bottom: 15px;
   border-bottom: 1px solid $title;
+  margin-bottom: 20px;
 }
 h1{
-  font-size: 2em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: left;
+  font-size: 1.7em;
 }
 h2, h3{
   font-size: 1.5em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: left;
-  font-weight: normal;
-  color: #333;
 }
 p{
-  font-size: 16px;
-  line-height: 24px;
+  font-weight: normal;
+  font-size: 16px;//Googleの推奨値
+  line-height: 28px;//1.7倍
+  margin-bottom: 30px;
 }
 a{color: #333;}
 a:visited{color: $visited;}
@@ -148,6 +173,7 @@ footer{
   width:980px;
   margin: 0 auto;
   overflow: hidden;
+  background-color: $white;
 }
 #main{
   width: 730px;
@@ -232,6 +258,15 @@ footer{
   }
 }
 
+//about
+#profile{
+  float: left;
+}
+#icon{
+  float: right;
+  margin-right: 30px;
+}
+
 
 //rules
 #rules{
@@ -242,7 +277,6 @@ footer{
   #signiture{
     text-align: right;
   }
-
 }
 
 //article_index
@@ -290,23 +324,39 @@ footer{
 }
 
 //article_form
-input, textarea, select {
-  border: 1px solid #bbb;
-  width: 100%;
+form {
+  width: 300px;
+  margin-left: 15px;
   margin-bottom: 15px;
+  input{
+    margin-bottom: 15px;
+  }
+  select{
+    display: block;
+    clear: both;
+    height: 35px;
+    margin-bottom: 15px;
+  }
 }
-select{
-  height: 35px;
+#article_form{
+  width: 80%;
 }
 
 
-
+//article_show
+#article_show_date{
+  float: right;
+}
+h2{
+  clear: both;
+}
 
 // responsive-design
 @media screen and(max-width: 767px) {
   //image
   img{
     max-width: 100%;
+    height: auto;
   }
 
   // Layout
@@ -317,6 +367,9 @@ select{
   #main,
   footer{
     width: 100%;
+  }
+  #logo{
+    width: 60%;
   }
   header h1{
     float: none;
@@ -346,6 +399,31 @@ select{
   }
   #main figure {
     text-align: center;
+  }
+
+  #rules{
+    width: 100%;
+  }
+  #article_index {
+    li{
+      width: 100%;
+      #article_text{
+        width: 62%;
+      }
+    }
+  }
+  #user_index {
+    li{
+      width: 100%;
+    }
+  }
+  #menu{
+    li{
+      a{
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    }
   }
 }
 

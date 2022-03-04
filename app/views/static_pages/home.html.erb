@@ -1,6 +1,6 @@
 <div id="wrapper">
   <div id="main">
-    <h2>最新記事</h2>
+    <h2><%= link_to "最新記事", root_path %></h2>
     <%= render 'layouts/sortbar' %>
 
     <ul id="article_index"><%= render @feed_items %></ul>

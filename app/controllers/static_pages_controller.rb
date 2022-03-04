@@ -9,11 +9,19 @@ class StaticPagesController < ApplicationController
   def about
     @user=current_user
     @nav=Category.take(4)
+    @rank_items=Article.order(impressions_count: 'DESC').take(5)
   end
 
   def rules
     @user=current_user
     @nav=Category.take(4)
+    @rank_items=Article.order(impressions_count: 'DESC').take(5)
+  end
+
+  def contact
+    @user=current_user
+    @nav=Category.take(4)
+    @rank_items=Article.order(impressions_count: 'DESC').take(5)
   end
 
   def others

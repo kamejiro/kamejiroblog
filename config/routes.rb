@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/rules', to: 'static_pages#rules'
+  get '/contact', to: 'static_pages#contact'
   get '/others', to: 'static_pages#others'
   get '/new', to: 'articles#new'
   get '/signup', to: 'users#signup'
