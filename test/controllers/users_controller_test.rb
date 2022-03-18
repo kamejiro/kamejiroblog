@@ -51,6 +51,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not get index without admin" do
+    get users_path
+    assert_redirected_to login_url
+    login_test(@user2)
+    get users_path
+    assert_redirected_to root_url
+  end
+
   test "invalid delete user without login" do
     get users_path
     assert_not flash.empty?
@@ -92,7 +100,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should not allow edit admin" do
+  test "should not allow post admin" do
     get signup_path
     assert_difference 'User.count', 1 do
       post users_path params: {
@@ -111,6 +119,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert @user3.name=="testuser3"
     assert_not @user3.admin?
   end
+
+  # test "should not allow edit admin" do
+  #   login_test(@user2)
+  #   get edit_user_path(@user2)
+  #   patch users_path params: {
+  #     user: {
+  #       name: "testuser3",
+  #       email: "test@example.com",
+  #       password: "foobar",
+  #       password_confirmation: "foobar",
+  #       admin: true
+  #     }
+  #   }
+  #   assert_redirected_to root_url
+  #   assert_not @user.admin?
+  # end
 
   # test "invalid edit user" do
   #   get edit_user_path(@user)

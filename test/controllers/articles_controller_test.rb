@@ -14,10 +14,16 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get index" do
+  test "valid get index" do
     login_test(@user)
     get articles_path
     assert_response :success
+  end
+
+  test "invalid get index" do
+    login_test(@user2)
+    get articles_path
+    assert_redirected_to root_url
   end
 
   test "invalid post article without login" do
@@ -138,10 +144,24 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to login_url
   end
+
+  test "invalid edit user without admin" do
+    login_test(@user2)
+    get edit_article_path(@article)
+    assert_redirected_to root_url
+    # patch article_path(@article) params{article:{title:"testuser",category_id: 1 ,abstract:"foobar",content:"foobar"}}
+    # assert_template 'articles/edit'
+    # assert_select "div.alert", "The form contains 4 errors"
+  end
   
   test "should get edit" do
     login_test(@user)
     get edit_article_path(@article)
     assert_response :success
+    # patch article_path(@article) params{article:{title:"testuser",category_id: 1 ,abstract:"foobar",content:"foobar"}}
+    # assert_redirected_to root_url
+    # assert_not flash.empty?
+    # @article.reload
+    # assert_equal title, @article.title
   end
 end

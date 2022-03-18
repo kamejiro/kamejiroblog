@@ -1,6 +1,6 @@
 require "test_helper"
 
-class UserDeleteTest < ActionDispatch::IntegrationTest
+class UserIndexTest < ActionDispatch::IntegrationTest
   def setup
     @user=users(:one)
   end
@@ -9,5 +9,6 @@ class UserDeleteTest < ActionDispatch::IntegrationTest
     login_test2(@user)
     get users_path
     assert_select "a[href=?]", user_path(@user)
+    assert_select "a[href=?]", edit_user_path(@user)
   end
 end

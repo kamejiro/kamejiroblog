@@ -5,11 +5,20 @@ class LayoutTest < ActionDispatch::IntegrationTest
     @user=users(:one)
     @user2=users(:two)
     @category=categorys(:one)
+    @category2=categorys(:two)
+    @category3=categorys(:three)
+    @category4=categorys(:four)
+    @category5=categorys(:five)
   end
+
   test "layout links without login" do
     get root_url
     assert_select "a[href=?]", root_path
     assert_select "a[href=?]", category_path(@category), count: 2
+    assert_select "a[href=?]", category_path(@category2), count: 2
+    assert_select "a[href=?]", category_path(@category3), count: 2
+    assert_select "a[href=?]", category_path(@category4), count: 2
+    assert_select "a[href=?]", category_path(@category5), count: 1
     assert_select "a[href=?]", others_path
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", signup_path
