@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     @nav=Category.take(4)
+    @categorys=Category.all
     @user=User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       login @user

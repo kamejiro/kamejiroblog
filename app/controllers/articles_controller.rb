@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
     @user=current_user
     @article=Article.find(params[:id])
     @rank_items=Article.order(impressions_count: 'DESC').take(5)
+    @categorys=Category.all
     @article.increment_impression
   end
 
@@ -39,6 +40,7 @@ class ArticlesController < ApplicationController
 
   def index
     @nav=Category.take(4)
+    @categorys=Category.all
     @user=current_user
     @articles=Article.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
   end

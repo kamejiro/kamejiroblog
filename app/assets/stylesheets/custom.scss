@@ -17,6 +17,7 @@
 //article_show
 //responsive-design
 
+
 // color difinition
 $white: #fff;
 $title: #70ad47;
@@ -24,8 +25,6 @@ $back: #b0c573;
 $current: #94b327;
 $visited: #69734c;
 
-
-// parameter difinision
 
 // universal　全体
 body{
@@ -103,6 +102,8 @@ header{
 }
 #logo{
   float:left;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 #search{
   float: right;
@@ -279,8 +280,8 @@ footer{
   }
 }
 
-//article_index
-#article_index{
+//article_feed
+#article_feed{
   li{
     clear: both;
     width: 730px;
@@ -404,11 +405,16 @@ h2{
   #rules{
     width: 100%;
   }
-  #article_index {
+  #article_feed {
     li{
+      height: auto;
       width: 100%;
       #article_text{
         width: 62%;
+      }
+      #article_image{
+        width: 100px;
+        height: 100px;
       }
     }
   }

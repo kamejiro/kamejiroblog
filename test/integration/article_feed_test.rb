@@ -16,7 +16,6 @@ class ArticleFeedTest < ActionDispatch::IntegrationTest
       assert_select 'a[href=?]', article_path(article)
     end
     assert_match @articleone.title.to_s, response.body
-    assert_match @articleone.abstract.to_s, response.body
   end
 
   # sidebar test
