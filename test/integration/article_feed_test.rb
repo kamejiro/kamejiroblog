@@ -10,7 +10,7 @@ class ArticleFeedTest < ActionDispatch::IntegrationTest
     get root_path
     #pagination
     assert_select 'div.pagination', count:1
-    assert_select "a[href=?]", '/?page=2'
+    assert_select "a[href=?]", '/?page=2&sort=created_at+desc'
     #article link
     Article.paginate(page: 1, per_page: 10).each do |article|
       assert_select 'a[href=?]', article_path(article)

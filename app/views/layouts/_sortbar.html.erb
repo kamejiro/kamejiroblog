@@ -3,8 +3,8 @@
     並び替え<b class="caret"></b>
   </a>
   <ul class="dropdown-menu dropdown-menu-right">
-    <li><%= link_to "降順", "#" %></li>
-    <li><%= link_to "昇順", "#" %></li>
-    <li><%= link_to "人気順", "#" %></li>
+    <li><%= link_to "降順", sort: "created_at desc" %></li>
+    <li><%= link_to "昇順", sort: "created_at" %></li>
+    <li><%= link_to "人気順", sort: "impressions_count" %></li>
   </ul>
 </div>
