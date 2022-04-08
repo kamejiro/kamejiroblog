@@ -100,6 +100,49 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not get edit with wrong user" do
+    login_test(@user2)
+    get edit_user_path(@user)
+    assert_redirected_to root_url
+  end
+
+  test "invalid edit user" do
+    login_test(@user)
+    get edit_user_path(@user)
+    assert_template 'users/edit'
+    patch user_path(@user), params: {
+      user: {
+        name:"",
+        email:"invalidemail",
+        password:"",
+        password_confirmation:""
+      }
+    }
+    assert_template 'users/edit'
+    assert_select "div.alert", "The form contains 4 errors"
+  end
+
+  test "valid edit user" do
+    new_name= "editeduser"
+    new_email="edited@example.com"
+    login_test(@user)
+    get edit_user_path(@user)
+    assert_template 'users/edit'
+    patch user_path(@user), params: {
+      user:{
+        name: new_name,
+        email: new_email,
+        password: "foobar",
+        password_confirmation: "foobar"
+      }
+    }
+    assert_redirected_to root_url
+    assert_not flash.empty?
+    @user.reload
+    assert_equal new_name, @user.name
+    assert_equal new_email, @user.email
+  end
+
   test "should not allow post admin" do
     get signup_path
     assert_difference 'User.count', 1 do
@@ -120,38 +163,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not @user3.admin?
   end
 
-  # test "should not allow edit admin" do
-  #   login_test(@user2)
-  #   get edit_user_path(@user2)
-  #   patch users_path params: {
-  #     user: {
-  #       name: "testuser3",
-  #       email: "test@example.com",
-  #       password: "foobar",
-  #       password_confirmation: "foobar",
-  #       admin: true
-  #     }
-  #   }
-  #   assert_redirected_to root_url
-  #   assert_not @user.admin?
-  # end
-
-  # test "invalid edit user" do
-  #   get edit_user_path(@user)
-  #   assert_template 'users/edit'
-  #   patch user_path(@user) params{user:{name:"testuser",email:"test@example.com",password:"foobar",password_confirmation:"foobar"}}
-  #   assert_template 'users/edit'
-  #   assert_select "div.alert", "The form contains 4 errors"
-  # end
-
-  # test "valid edit user" do
-  #   get edit_user_path(@user)
-  #   assert_template 'users/edit'
-  #   patch user_path(@user) params{user:{name:"testuser",email:"test@example.com",password:"foobar",password_confirmation:"foobar"}}
-  #   assert_redirected_to users_url
-  #   assert_not flash.empty?
-  #   @user.reload
-  #   assert_equal name, @user.name
-  #   assert_equal email, @user.email
-  # end
+  test "should not allow edit admin" do
+    login_test(@user2)
+    get edit_user_path(@user2)
+    patch user_path(@user2), params: {
+      user: {
+        name: "testuser3",
+        email: "test@example.com",
+        password: "foobar",
+        password_confirmation: "foobar",
+        admin: true
+      }
+    }
+    assert_redirected_to root_url
+    assert_not @user2.reload.admin?
+  end
 end

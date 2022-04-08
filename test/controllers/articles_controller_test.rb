@@ -139,29 +139,70 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
   end
 
-  test "invalid edit user without login" do
+  test "invalid edit article without login" do
     get edit_article_path(@article)
     assert_not flash.empty?
     assert_redirected_to login_url
+    patch article_path(@article), params: {
+      article: {
+        title:"wrong_title",
+        category_id: "0",
+        abstract:"wrong_abstract",
+        content:"wrong_content"
+      }
+    }
+    assert_redirected_to login_url
+    assert_not_equal "wrong_title", @article.title
   end
 
-  test "invalid edit user without admin" do
+  test "invalid edit article without admin" do
     login_test(@user2)
     get edit_article_path(@article)
     assert_redirected_to root_url
-    # patch article_path(@article) params{article:{title:"testuser",category_id: 1 ,abstract:"foobar",content:"foobar"}}
-    # assert_template 'articles/edit'
-    # assert_select "div.alert", "The form contains 4 errors"
+    patch article_path(@article), params: {
+      article: {
+        title:"wrong_title",
+        category_id: "0",
+        abstract:"wrong_abstract",
+        content:"wrong_content"
+      }
+    }
+    assert_redirected_to root_url
+    assert_not_equal "wrong_title", @article.title
+  end
+
+  test "invalid edit article" do
+    login_test(@user)
+    get edit_article_path(@article)
+    assert_template 'articles/edit'
+    patch article_path(@article), params: {
+      article: {
+        title:"",
+        category_id: "0",
+        abstract:"",
+        content:""
+      }
+    }
+    assert_template 'articles/edit'
+    assert_select "div.alert", "The form contains 3 errors"
   end
   
-  test "should get edit" do
+  test "valid edit article" do
+    new_title="edited article title"
     login_test(@user)
     get edit_article_path(@article)
     assert_response :success
-    # patch article_path(@article) params{article:{title:"testuser",category_id: 1 ,abstract:"foobar",content:"foobar"}}
-    # assert_redirected_to root_url
-    # assert_not flash.empty?
-    # @article.reload
-    # assert_equal title, @article.title
+    patch article_path(@article), params: {
+      article: {
+        title: new_title,
+        category_id: "0",
+        abstract:"foobar",
+        content:"foobar"
+      }
+    }
+    assert_redirected_to root_url
+    assert_not flash.empty?
+    @article.reload
+    assert_equal new_title, @article.title
   end
 end
