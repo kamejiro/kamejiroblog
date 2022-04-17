@@ -12,6 +12,8 @@
         <%=@article.updated_at.strftime('%Y/%m/%d')%>に更新
       <% end %>
     </div>
+
+    <%= render 'toc'%>
     <div id="article_content">
       <%=@article.content.html_safe %>
     </div>
@@ -19,3 +21,4 @@
 
   <%= render 'layouts/sidebar'%>
 </div>
+

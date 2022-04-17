@@ -37,9 +37,9 @@ categoryTest=Category.last
 categoryTest.articles.create!(title: "ネーションズリーグ決勝2021　フランス対スペインを見て",
                 abstract: "10月11日（日本時間何時）にネーションズリーグ2021決勝が行われ、フランスが2対1でスペインを破り今大会初の優勝を果たした。ベンゼマを筆頭とする豪華スター陣を有するフランスと若返りを測るスペインのビックマッチを見た感想を述べる。",
                 content: "
-                <h2>初めに<h2>
+                <h2>初めに</h2>
                 <blockquote class='twitter-tweet'><p lang='fr' dir='ltr'>🇫🇷 Congratulations France, 2021 UEFA Nations League champions!🎉🎉🎉<a href='https://twitter.com/hashtag/NationsLeague?src=hash&amp;ref_src=twsrc%5Etfw'>#NationsLeague</a> <a href='https://t.co/djSrqtrGmc'>pic.twitter.com/djSrqtrGmc</a></p>&mdash; UEFA EURO 2024 (@EURO2024) <a href='https://twitter.com/EURO2024/status/1447302244567760896?ref_src=twsrc%5Etfw'>October 10, 2021</a></blockquote> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>
-                <h2>フォーメーション<h2>
+                <h2>フォーメーション</h2>
                 <div class='flance'>
                   <p>1 ロリス<br>
                   3 キンペンベ<br>
@@ -68,14 +68,14 @@ categoryTest.articles.create!(title: "ネーションズリーグ決勝2021　�
                   21 オヤルザバル<br>
                   </p>
                 </div>
-                <h2>スコアとスタッツ<h2>
+                <h2>スコアとスタッツ</h2>
                 <p>スペイン 1 - 2 フランス<br>
                 ⚽64’ オヤルザバル<br>
                 ⚽66’ ベンゼマ<br>
                 ⚽80’ エンバペ<br>
                 </p>
 
-                <h2>試合展開<h2>
+                <h2>試合展開</h2>
                 <p>ネーションズリーグ2021決勝のスペインvsフランスが2021年10月11日に行われ、1-2でフランスが勝利した。<br>
                 若干18歳のガビを中盤に起用した4-3-3のフォーメーションで挑むスペインに対し、フォーメーションを模索中のフランスはベンバペを2トップに据えた5-2-1-2で試合に臨んだ。</p>
                 

@@ -32,6 +32,22 @@ oldest_article:
   category_id: 1
   created_at: <%= 2.years.ago %>
 
+toc_article:
+  id: 35
+  title: "目次用記事のタイトルです。"
+  abstract: "目次用記事の概要です。"
+  category_id: 1
+  created_at: <%= 2.years.ago %>
+  content: "
+    <h2 id='testid'>はじめに</h2>
+    <p>はじめにの内容です。</p>
+    <h2 id='2'>見出し1</h2>
+    <p>見出し1の内容です。</p>
+    <h2 id='3'>見出し2</h2>
+    <p>見出し2の内容です。</p>
+    <h2 id='4'>最後に</h2>
+    <p>最後にの内容です。</p>"
+
 <% 30.times do |n| %>
 article_<%= n %>:
   id: <%= n+2 %>

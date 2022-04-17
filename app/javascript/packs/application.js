@@ -25,7 +25,7 @@ $(function(){
 });
 
 // アコーディオンメニュー
-$(function(){
+$(document).on("turbolinks:load", function(){
   $('#search div').on('click', function(){
     if($('.content').hasClass('open')){
       $('.content').removeClass('open');

@@ -352,6 +352,21 @@ form {
 h2{
   clear: both;
 }
+#toc{
+  clear: both;
+  background-color: #ddd;
+  #toc_title{
+    padding-top: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  ul{
+    li{
+      padding-bottom: 10px;
+    }
+  }
+}
 
 // responsive-design
 @media screen and(max-width: 767px) {
