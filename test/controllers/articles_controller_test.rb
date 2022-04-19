@@ -6,11 +6,17 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @user=users(:one)
     @user2=users(:two)
     @article= articles(:one)
+    @article2=articles(:another_category)
   end
 
   test "should get new" do
     login_test(@user)
     get new_path
+    assert_response :success
+  end
+
+  test "should get search" do
+    get search_path
     assert_response :success
   end
 
@@ -204,5 +210,21 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     @article.reload
     assert_equal new_title, @article.title
+  end
+
+  test "should get search" do
+    get search_path, params: {
+      keyword: "テストタイトル"
+    }
+    assert_select "a[href=?]", article_path(@article), count: 1
+    assert_select "a[href=?]", article_path(@article2), count: 0
+  end
+
+  test "escape SQL injection" do
+    assert_no_difference 'Article.count', do
+      get search_path, params: {
+        keyword: "'); select * from articles;--('DROP TABLE articles;')"
+      }
+    end
   end
 end

@@ -74,8 +74,20 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search
+    @user=current_user
+    @nav=Category.take(4)
+    @categorys=Category.all
+    @articles=Article.search(search_params[:keyword]).paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
+    render 'search'
+  end
+
   private
   def article_params
     params.require(:article).permit(:title, :abstract, :category_id, :content)
+  end
+
+  def search_params
+    params.permit(:keyword)
   end
 end

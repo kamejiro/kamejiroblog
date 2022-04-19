@@ -109,6 +109,9 @@ header{
   float: right;
   margin: 20px 30px 10px 0px;
 }
+#search_form{
+  display: flex;
+}
 .content{
   display: none;
   width: 980px;

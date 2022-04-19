@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/search', to: 'articles#search'
 
   resources :articles, only: [:show, :create, :destroy, :index, :edit, :update]
   resources :categorys, only: [:show]

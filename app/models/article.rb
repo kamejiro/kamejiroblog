@@ -11,4 +11,8 @@ class Article < ApplicationRecord
     self.impressions_count += 1
   end
 
+  def self.search(keyword)
+    Article.where(["title LIKE?", "%#{keyword}%"])
+  end
+
 end

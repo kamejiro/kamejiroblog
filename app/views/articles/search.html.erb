@@ -1,0 +1,12 @@
+<div id="wrapper">
+  <div id="main">
+    <h2>記事検索結果</h2>
+    <%= render 'layouts/sortbar' %>
+
+    <ul id="article_feed">
+      <%= render @articles %>
+    </ul>
+    
+    <%= will_paginate @articles, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 1 %>
+  </div>
+</div>

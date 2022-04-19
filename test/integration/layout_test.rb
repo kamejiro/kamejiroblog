@@ -30,6 +30,7 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", articles_path, count: 0
     assert_select "a[href=?]", edit_user_path(@user), count: 0
     assert_select "a[href=?]", users_path, count: 0
+    assert_select 'form#search_form', count:1
   end
 
   test "layout links with login" do
