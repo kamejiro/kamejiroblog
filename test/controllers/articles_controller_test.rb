@@ -212,7 +212,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_equal new_title, @article.title
   end
 
-  test "should get search" do
+  test "should search article" do
     get search_path, params: {
       keyword: "テストタイトル"
     }
@@ -221,7 +221,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "escape SQL injection" do
-    assert_no_difference 'Article.count', do
+    assert_no_difference 'Article.count' do
       get search_path, params: {
         keyword: "'); select * from articles;--('DROP TABLE articles;')"
       }
