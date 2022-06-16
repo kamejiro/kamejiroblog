@@ -9,6 +9,10 @@ class ArticlesController < ApplicationController
     @rank_items=Article.order(impressions_count: 'DESC').take(5)
     @categorys=Category.all
     @article.increment_impression
+    if @article.private_status=="private"
+      check_admin
+      flash[:notice]="このページは表示できません。"
+    end
   end
 
   def new
@@ -84,7 +88,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :abstract, :category_id, :content)
+    params.require(:article).permit(:title, :abstract, :category_id, :content, :private_status)
   end
 
   def search_params

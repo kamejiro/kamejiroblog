@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_31_152317) do
+ActiveRecord::Schema.define(version: 2022_06_07_130653) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_12_31_152317) do
     t.string "abstract"
     t.integer "impressions_count", default: 0
     t.integer "category_id", null: false
+    t.integer "private_status", default: 0, null: false
     t.index ["category_id", "created_at"], name: "index_articles_on_category_id_and_created_at"
     t.index ["category_id"], name: "index_articles_on_category_id"
   end

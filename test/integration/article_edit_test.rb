@@ -9,6 +9,7 @@ class ArticleEditTest < ActionDispatch::IntegrationTest
   test "should get article form" do
     login_test2(@user)
     get edit_article_path(@article)
+    assert_select 'form input[type=radio]'
     assert_select 'form input[value="テストタイトルです。"]'
     assert_select "form select#article_category_id"
     assert_select "form textarea#article_abstract"

@@ -1,9 +1,20 @@
 <%=form_with(model: @article, local:true, id: "article_form") do |f|%>
   <%= render 'layouts/error_messages', object: f.object %>
-  <%= f.label :title %>
+
+  <%= f.label "記事の公開" %>
+  <div class="form-check">
+    <%= f.radio_button :private_status, :public, class: 'form-check-input' %>
+    <%= f.label "公開", class: 'form-check-label'%>
+  </div>
+  <div class="form-check">
+    <%= f.radio_button :private_status, :private, class: 'form-check-input' %>
+    <%= f.label "非公開", class: 'form-check-label'%>
+  </div>
+
+  <%= f.label "記事のタイトル" %>
   <%= f.text_field :title, class: 'form-control' %>
 
-  <%= f.label :category_id %>
+  <%= f.label "カテゴリー" %>
   <%= f.select(:category_id, class: 'form-control') do %>
     <%=content_tag(:option,  @category.category, value: @article.category_id)%>
     <%@categorys.each do |c|%>
@@ -11,10 +22,10 @@
     <%end%>
   <%end%>
 
-  <%= f.label :abstract %>
+  <%= f.label "概要" %>
   <%= f.text_area :abstract, class: 'form-control', size: "24x10"%>
 
-  <%= f.label :content %>
+  <%= f.label "内容" %>
   <%= f.text_area :content, class: 'form-control', size: "24x100" %>
   
   <%= f.submit "投稿", class: "btn btn-primary" %>

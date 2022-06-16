@@ -227,4 +227,24 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       }
     end
   end
+
+  test "change private_status" do
+    login_test(@user)
+    get article_path(@article)
+    assert_response :success
+    patch article_path(@article), params: {
+      article: {
+        category_id: "0",
+        private_status: "private"
+      }
+    }
+    assert_redirected_to root_url
+    assert_not flash.empty?
+    @article.reload
+    get article_path(@article)
+    assert_response :success
+    delete logout_path
+    get article_path(@article)
+    assert_redirected_to root_url
+  end
 end

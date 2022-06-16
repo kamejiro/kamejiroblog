@@ -7,6 +7,11 @@ class Article < ApplicationRecord
   validates :category_id, presence: true
   validates :content, presence: true, uniqueness: true
 
+  enum private_status: {
+    public: 0, 
+    private: 1
+  }, _prefix: true
+
   def increment_impression
     self.impressions_count += 1
   end
