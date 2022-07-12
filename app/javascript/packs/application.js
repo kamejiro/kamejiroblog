@@ -36,3 +36,21 @@ $(document).on("turbolinks:load", function(){
     }
   });
 });
+
+// クリップボードへコピー
+$(function(){
+  $('#copy_image').on('click', function(event){
+    var targetImageTag=document.getElementById("copyTarget");
+    if(navigator.clipboard){
+      //
+      navigator.clipboard.writeText(targetImageTag.outerHTML).then(function(){
+        console.log("coppied.");
+        console.log(targetImageTag.outerHTML);
+      },function(){
+        console.log("coppy denied.");
+      });
+    }else{
+      console.log("coppy denied.");
+    }
+  });
+});
