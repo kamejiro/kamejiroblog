@@ -31,6 +31,8 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", edit_user_path(@user), count: 0
     assert_select "a[href=?]", users_path, count: 0
     assert_select 'form#search_form', count:1
+    assert_select "a[href=?]", upload_path, count: 0
+    assert_select "a[href=?]", images_path, count: 0
   end
 
   test "layout links with login" do
@@ -49,6 +51,8 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", articles_path, count: 0
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", signup_path, count: 0
+    assert_select "a[href=?]", upload_path, count: 0
+    assert_select "a[href=?]", images_path, count: 0
   end
 
   test "layout links with admin" do
@@ -62,6 +66,8 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", users_path
     assert_select "a[href=?]", new_path
     assert_select "a[href=?]", articles_path
+    assert_select "a[href=?]", upload_path
+    assert_select "a[href=?]", images_path
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", signup_path, count: 0
     assert_select "a[href=?]", rules_path, count: 0

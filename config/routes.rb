@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/search', to: 'articles#search'
+  get '/upload', to: 'images#new'
 
   resources :articles, only: [:show, :create, :destroy, :index, :edit, :update]
   resources :categorys, only: [:show]
   resources :users, only: [:create, :destroy, :index, :edit, :update]
+  resources :images, only: [:create, :destroy, :index]
 end

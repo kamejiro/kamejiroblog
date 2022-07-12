@@ -371,6 +371,20 @@ h2{
   }
 }
 
+//image_index
+#image_index{
+  clear: both;
+  li{
+    width: 200px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    text-align: center;
+    float: left;
+  }
+}
+
+
+
 // responsive-design
 @media screen and(max-width: 767px) {
   //image

@@ -1,0 +1,19 @@
+<div id="wrapper">
+  <div id="main">
+    <h2>画像一覧</h2>
+    <%= render 'layouts/sortbar' %>
+
+    <ul id="image_index">
+      <% @images.each do |image| %>
+        <li>
+          <%=image_tag image.resize_index_image %>
+          id: <%=image.id%>
+          | <%=link_to "コピー", '#' %>
+          | <%=link_to "削除", image, method: :delete, data: {confirm: "You sure?"}%>
+        </li>
+      <%end%>
+    </ul>
+
+    <%= will_paginate @images, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 1 %>
+  </div>
+</div>
