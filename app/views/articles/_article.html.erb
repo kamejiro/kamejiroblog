@@ -11,6 +11,8 @@
         <% end %>
       </div>
     </div>
-    <div id="article_image">画像です</div>
+    <div id="article_image">
+      <%=image_tag article.resize_feed_image if article.image.attached? %>
+    </div>
   <% end %>
 </li>

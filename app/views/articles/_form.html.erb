@@ -25,6 +25,9 @@
   <%= f.label "概要" %>
   <%= f.text_area :abstract, class: 'form-control', size: "24x10"%>
 
+    <%= f.label "サムネイル画像" %>
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: 'form-control' %>
+
   <%= f.label "内容" %>
   <%= f.text_area :content, class: 'form-control', size: "24x100" %>
   

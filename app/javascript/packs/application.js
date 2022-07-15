@@ -40,12 +40,12 @@ $(document).on("turbolinks:load", function(){
 // クリップボードへコピー
 $(function(){
   $('#copy_image').on('click', function(event){
+    //対象を取得
     var targetImageTag=document.getElementById("copyTarget");
     if(navigator.clipboard){
-      //
+      //クリップボードにコピー
       navigator.clipboard.writeText(targetImageTag.outerHTML).then(function(){
         console.log("coppied.");
-        console.log(targetImageTag.outerHTML);
       },function(){
         console.log("coppy denied.");
       });

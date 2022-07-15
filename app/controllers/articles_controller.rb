@@ -30,6 +30,7 @@ class ArticlesController < ApplicationController
     if article_params[:category_id] != ""
       @category=Category.find(article_params[:category_id])
       @article=@category.articles.build(article_params)
+      @article.image.attach(params[:article][:image])
       if @article.save
         #フラッシュとリダイレクト
         flash[:success]="Article created"
@@ -88,7 +89,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :abstract, :category_id, :content, :private_status)
+    params.require(:article).permit(:title, :abstract, :category_id, :image, :content, :private_status)
   end
 
   def search_params
