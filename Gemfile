@@ -5,7 +5,7 @@ ruby '2.7.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-# gem 'aws-sdk-s3', '1.46.0', require: false
+gem 'aws-sdk-s3', '1.46.0', require: false
 # Use Active Storage variant
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 # Use image processing like resize
@@ -41,8 +41,6 @@ gem 'rexml', '3.2.4'
 gem 'font-awesome-rails'
 # Use byebug
 gem 'byebug'
-
-gem 'aws-sdk'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
