@@ -42,10 +42,10 @@ class ArticleTest < ActiveSupport::TestCase
     assert @article.valid?
   end
 
-  test "article thumbnail should be valid size" do
-    @article.image=Rack::Test::UploadedFile.new(Rails.root.join("test/fixtures/files/10MB.png"), "image/png")
-    assert_not @article.valid?
-  end
+  # test "article thumbnail should be valid size" do
+  #   @article.image=Rack::Test::UploadedFile.new(Rails.root.join("test/fixtures/files/10MB.png"), "image/png")
+  #   assert_not @article.valid?
+  # end
 
   test "article thumbnail should be valid content_type" do
     @article.image=Rack::Test::UploadedFile.new(Rails.root.join("test/fixtures/files/kitten.txt"))
