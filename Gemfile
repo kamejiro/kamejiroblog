@@ -42,12 +42,20 @@ gem 'font-awesome-rails'
 # Use byebug
 gem 'byebug'
 
-group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
+# 環境をdockerにする際に追加
+gem 'i18n', '1.12.0'
+gem 'aws-partitions', '1.610.0'
+gem 'pg', '~>1.2.3'
+gem 'rake', '13.0.6'
+gem 'public_suffix', '4.0.7'
+gem 'nokogiri', '1.13.7'
+
+# group :development, :test do
+#   # Use sqlite3 as the database for Active Record
+#   gem 'sqlite3', '~> 1.4.2'
+#   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+#   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+# end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -77,7 +85,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '~>1.2.3'
+  # gem 'pg', '~>1.2.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

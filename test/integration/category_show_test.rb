@@ -9,7 +9,7 @@ class CategoryShowTest < ActionDispatch::IntegrationTest
 
   test "should include only current category" do
     get category_url(@category)
-    assert_select "a[href=?]", article_path(@article1)
-    assert_select "a[href=?]", article_path(@article2), count: 0
+    assert_select "#article_feed li a[href=?]", article_path(@article1)
+    assert_select "#article_feed li a[href=?]", article_path(@article2), count: 0
   end
 end

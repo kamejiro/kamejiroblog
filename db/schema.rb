@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_07_09_072757) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_07_09_072757) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_07_09_072757) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "abstract"
     t.integer "impressions_count", default: 0
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.integer "private_status", default: 0, null: false
     t.index ["category_id", "created_at"], name: "index_articles_on_category_id_and_created_at"
     t.index ["category_id"], name: "index_articles_on_category_id"
