@@ -7,6 +7,7 @@ ENV ROOT=/myapp \
     BUNDLE_PATH=$GEM_HOME
 ENV BUNDLE_BIN=$BUNDLE_PATH/bin
 ENV PATH /app/bin:$BUNDLE_BIN:$PATH
+ENV BUNDLER_VERSION 2.2.22
 
 WORKDIR $ROOT
 
@@ -32,6 +33,7 @@ RUN apk update && \
 COPY Gemfile $ROOT
 COPY Gemfile.lock $ROOT
 
+RUN gem install bundler -v $BUNDLER_VERSION
 RUN bundle install -j4
 # 不要ファイル削除
 RUN rm -rf /usr/local/bundle/cache/* /usr/local/share/.cache/* /var/cache/* /tmp/* && \
