@@ -72,7 +72,7 @@ jobs:
       - run:
           name: migration env production
           command: |
-            heroku run rails db:migrate --app ${HEROKU_APP_NAME}
+            rails db:migrate --app ${HEROKU_APP_NAME}
 
 workflows:
   version: 2
