@@ -51,10 +51,11 @@ jobs:
           name: rails test
           command: bundle exec rails test
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: circleci/ruby:2.7-node
     steps:
       - checkout
+      - setup
       - run:
           no_output_timeout: 30m
           name: Deploy master to heroku

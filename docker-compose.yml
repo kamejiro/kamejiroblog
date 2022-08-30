@@ -30,8 +30,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      RAILS_ENV: production
-      NODE_ENV: production
+      RAILS_ENV: development
+      NODE_ENV: development
       DATABESE_HOST: db
       DATABESE_PORT: 5432
       DATABESE_USER: postgres
@@ -48,8 +48,8 @@ services:
       - .:/myapp:cached
       - node_modules:/myapp/node_modules:cached
     environment:
-      RAILS_ENV: production
-      NODE_ENV: production
+      RAILS_ENV: development
+      NODE_ENV: development
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
     tty: false
     stdin_open: false
