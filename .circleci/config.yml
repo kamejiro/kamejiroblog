@@ -53,6 +53,8 @@ jobs:
   deploy:
     docker:
       - image: circleci/ruby:2.7-node
+        environment:
+          RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     steps:
       - checkout
       - setup
@@ -63,6 +65,10 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
             fi
+      - run:
+          name: export rails master key
+          command: |
+            export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 
 workflows:
   version: 2
