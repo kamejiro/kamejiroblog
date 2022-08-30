@@ -69,10 +69,6 @@ jobs:
           name: export rails master key
           command: |
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-      - run:
-          name: migration env production
-          command: |
-            bundle exec rails db:migrate RAILS_ENV=production
 
 workflows:
   version: 2
