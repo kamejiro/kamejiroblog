@@ -63,7 +63,7 @@ jobs:
           command: yarn install
       - run:
           name: webpack Install
-          command: bundle exec bin/webpack
+          command: rails webpack:install
       - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
