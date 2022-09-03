@@ -55,9 +55,8 @@ jobs:
       - image: circleci/ruby:2.7-node
         environment:
           RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-    working_directory: ~/repo
+    working_directory: ~/myapp
     steps:
-      - checkout
       - setup
       - run:
           name: 'Install Heroku CLI, if necessary'
