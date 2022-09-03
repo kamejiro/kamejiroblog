@@ -77,6 +77,14 @@ jobs:
           name: export rails master key
           command: |
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - run:
+          name: yarn Install
+          command: |
+            yarn install
+      - run:
+          name: webpack Install
+          command: |
+            rails webpack:install
 
 workflows:
   version: 2
