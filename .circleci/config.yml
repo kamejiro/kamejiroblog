@@ -80,11 +80,11 @@ jobs:
       - run:
           name: yarn Install
           command: |
-            yarn install
+            heroku run yarn install
       - run:
           name: webpack Install
           command: |
-            rails webpack:install
+            heroku run rails webpack:install
 
 workflows:
   version: 2
