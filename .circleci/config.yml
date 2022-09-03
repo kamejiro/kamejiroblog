@@ -59,6 +59,12 @@ jobs:
       - checkout
       - setup
       - run:
+          name: yarn Install
+          command: yarn install
+      - run:
+          name: webpack Install
+          command: bundle exec bin/webpack
+      - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
           command: |
