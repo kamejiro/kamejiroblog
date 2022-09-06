@@ -52,29 +52,12 @@ jobs:
           command: bundle exec rails test
 
   deploy:
-    docker:
-      - image: circleci/ruby:2.7-node
-        environment:
-          RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    machine:
+      enabled: true
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     steps:
       - setup
-      - run:
-          name: create assets precompile cache key
-          command: |
-            git rev-parse $(git log --oneline -n 1 app/assets lib/assets vendor/assets Gemfile.lock | awk '{{print $1}}') > VERSION
-      - restore_cache:
-          keys:
-            - assets-precompile-cache-{{ checksum "VERSION" }}
-            - assets-precompile-cache-
-      - run:
-          name: assets precompile
-          command: |
-            bundle exec rails assets:precompile
-      - save_cache:
-          key: assets-precompile-cache-{{ checksum "VERSION" }}
-          paths:
-            - public/assets
-            - tmp/cache/assets
       - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
@@ -86,6 +69,7 @@ jobs:
           name: export rails master key
           command: |
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+
 
 workflows:
   version: 2
