@@ -50,6 +50,7 @@ jobs:
       - run:
           name: rails test
           command: bundle exec rails test
+
   deploy:
     docker:
       - image: circleci/ruby:2.7-node
@@ -58,13 +59,17 @@ jobs:
     steps:
       - setup
       - run:
-          name: 'Install Heroku CLI, if necessary'
+          name: assets precompile
           command: |
-            if [[ $(command -v heroku) == "" ]]; then
-              curl https://cli-assets.heroku.com/install.sh | sh
-            else
-              echo "Heroku is already installed. No operation was performed."
-            fi
+            bundle exec rails assets:precompile
+      - run:
+          name: webpacker Install
+          command: |
+            bundle exec rails webpacker:install
+      - run:
+          name: webpacker compile
+          command: |
+            bundle exec rails webpacker:compile
       - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
@@ -76,11 +81,6 @@ jobs:
           name: export rails master key
           command: |
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-      - run:
-          name: yarn Install
-          command: |
-            yarn install
-
 
 workflows:
   version: 2
