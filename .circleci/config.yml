@@ -59,6 +59,14 @@ jobs:
     steps:
       - setup
       - run:
+          name: create assets precompile cache key
+          command: |
+            git rev-parse $(git log --oneline -n 1 app/assets lib/assets vendor/assets Gemfile.lock | awk '{{print $1}}') > VERSION
+      - restore_cache:
+          keys:
+            - assets-precompile-cache-{{ checksum "VERSION" }}
+            - assets-precompile-cache-
+      - run:
           name: assets precompile
           command: |
             bundle exec rails assets:precompile
