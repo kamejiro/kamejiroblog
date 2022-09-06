@@ -80,10 +80,7 @@ jobs:
           name: yarn Install
           command: |
             yarn install
-      - run:
-          name: webpack Install
-          command: |
-            bundle exec rails webpacker:install
+
 
 workflows:
   version: 2
