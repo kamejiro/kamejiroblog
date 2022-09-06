@@ -63,10 +63,6 @@ jobs:
           command: |
             bundle exec rails assets:precompile
       - run:
-          name: webpacker Install
-          command: |
-            bundle exec rails webpacker:install
-      - run:
           name: webpacker compile
           command: |
             bundle exec rails webpacker:compile
