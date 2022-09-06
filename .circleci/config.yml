@@ -62,10 +62,11 @@ jobs:
           name: assets precompile
           command: |
             bundle exec rails assets:precompile
-      - run:
-          name: webpacker compile
-          command: |
-            bundle exec rails webpacker:compile
+      - save_cache:
+          key: assets-precompile-cache-{{ checksum "VERSION" }}
+          paths:
+            - public/assets
+            - tmp/cache/assets
       - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
