@@ -55,6 +55,7 @@ jobs:
     machine:
       enabled: true
     steps:
+      - checkout
       - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
