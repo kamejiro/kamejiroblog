@@ -57,7 +57,6 @@ jobs:
     environment:
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     steps:
-      - setup
       - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
@@ -69,7 +68,6 @@ jobs:
           name: export rails master key
           command: |
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-
 
 workflows:
   version: 2
