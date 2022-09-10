@@ -5,21 +5,55 @@ orbs:
   node: circleci/node@2
 
 #setup
-commands:
-  setup:
-    steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
+# commands:
+#   setup:
+#     steps:
+#       - checkout
+#       - ruby/install-deps
+#       - node/install-packages:
+#           pkg-manager: yarn
+#           cache-key: "yarn.lock"
 
 jobs:
   build:
     docker:
       - image: circleci/ruby:2.7-node
+      - image: circleci/postgres:11.6-alpine
+        name: "db"
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: myapp_build
+          POSTGRES_PASSWORD: ""
+    environment: 
+      BUNDLE_JOBS: "4"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: postgres
+      PGPASSWORD: ""
+      RAILS_ENV: test
+    working_directory: ~/myapp
     steps:
-      - setup
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "Gemfile.lock" }}
+            - v2-dependencies-
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: rails db:create
+          command: bundle exec rails db:create
+      - run:
+          name: rails db:migrate
+          command: bundle exec rails db:migrate
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+
   test:
     docker:
       - image: circleci/ruby:2.7-node
@@ -37,7 +71,17 @@ jobs:
       PGPASSWORD: ""
       RAILS_ENV: test
     steps:
-      - setup
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "Gemfile.lock" }}
+            - v2-dependencies-
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
       - run:
           name: rails db:create
           command: bundle exec rails db:create
