@@ -105,6 +105,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: precompile
+          command: RAILS_ENV=production bundle exec rake assets:precompile
+      - run:
           no_output_timeout: 30m
           name: Deploy master to heroku
           command: |
