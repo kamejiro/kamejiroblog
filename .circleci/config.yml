@@ -53,6 +53,10 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
+      - run:
+          name: webpack Install
+          command: |
+            bundle exec rails webpacker:install -y
 
   test:
     docker:
