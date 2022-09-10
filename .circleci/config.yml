@@ -56,7 +56,7 @@ jobs:
       - run:
           name: webpack Install
           command: |
-            bundle exec rails webpacker:install -y
+            bundle exec rails webpacker:install
 
   test:
     docker:
