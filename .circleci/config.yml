@@ -57,6 +57,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
+      - setup_remote_docker
       - heroku/release-docker-image
   #     - run:
   #         name: heroku maintenance on
