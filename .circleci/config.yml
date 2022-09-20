@@ -58,6 +58,7 @@ jobs:
           RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: 'Install Heroku CLI, if necessary'
           command: |
