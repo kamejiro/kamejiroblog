@@ -9,10 +9,6 @@ services:
     environment:
       RAILS_ENV: production
       RAILS_SERVE_STATIC_FILES: 1
-      AWS_REGION: ap-northeast-1
-      AWS_ACCESS_KEY: a1IoE/vxW7nNr339yDF2OAd7sWQ53XtwtKe1FSLy
-      AWS_SECRET_KEY: AKIAYBPY27BHEECEKRQA
-      AWS_BUCKET: kamejiroblog-20220716
       DATABESE_HOST: db
       DATABESE_PORT: 5432
       DATABESE_USER: postgres

@@ -42,3 +42,4 @@ yarn-debug.log*
 test/fixtures/files/10MB.png
 
 /variables.env
+/docker-compose.prod.yml
