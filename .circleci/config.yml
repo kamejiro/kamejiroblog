@@ -78,7 +78,7 @@ jobs:
           command: heroku container:push web --app ${HEROKU_APP_NAME}
       - run:
           name: precompile
-          command: heroku run rails assets:precompile
+          command: heroku run rails assets:precompile--app ${HEROKU_APP_NAME}
       - run:
           name: db migration
           command: heroku run rails db:migrate
