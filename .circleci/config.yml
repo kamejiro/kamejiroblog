@@ -57,7 +57,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git
+      - heroku/release-docker-image
   #     - run:
   #         name: heroku maintenance on
   #         command: heroku maintenance:on --app ${HEROKU_APP_NAME}
