@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    command: ash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
+    volumes:
+      - .:/myapp
+      - /var/tmp
+    environment:
+      RAILS_ENV: production
+      RAILS_SERVE_STATIC_FILES: 1
+      AWS_REGION: ap-northeast-1
+      AWS_ACCESS_KEY: a1IoE/vxW7nNr339yDF2OAd7sWQ53XtwtKe1FSLy
+      AWS_SECRET_KEY: AKIAYBPY27BHEECEKRQA
+      AWS_BUCKET: kamejiroblog-20220716
+      DATABESE_HOST: db
+      DATABESE_PORT: 5432
+      DATABESE_USER: postgres
+      DATABESE_PASSWORD: password
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+    networks:
+      - sample
+
+  db:
+    image: postgres:11.0-alpine
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=ja_JP.UTF-8"
+      TZ: "Asia/Tokyo"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - sample
+
+networks:
+  sample:
+
+volumes:
+  postgres:

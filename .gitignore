@@ -40,3 +40,5 @@ yarn-debug.log*
 .yarn-integrity
 
 test/fixtures/files/10MB.png
+
+/variables.env

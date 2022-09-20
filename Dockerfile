@@ -8,6 +8,7 @@ ENV ROOT=/myapp \
 ENV BUNDLE_BIN=$BUNDLE_PATH/bin
 ENV PATH /app/bin:$BUNDLE_BIN:$PATH
 ENV BUNDLER_VERSION 2.2.22
+ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=1
 
 WORKDIR $ROOT
@@ -46,4 +47,5 @@ COPY . $ROOT
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["sh", "/usr/bin/entrypoint.sh" ]
+CMD sh -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
 EXPOSE 3000

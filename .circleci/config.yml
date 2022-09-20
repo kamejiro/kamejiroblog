@@ -1,63 +1,25 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.1.2
-  node: circleci/node@2
+  ruby: cimg/ruby@1.1.2
+  node: cimg/node@2
 
 #setup
-# commands:
-#   setup:
-#     steps:
-#       - checkout
-#       - ruby/install-deps
-#       - node/install-packages:
-#           pkg-manager: yarn
-#           cache-key: "yarn.lock"
+commands:
+  setup:
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
 
 jobs:
   build:
     docker:
       - image: circleci/ruby:2.7-node
-      - image: circleci/postgres:11.6-alpine
-        name: "db"
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_build
-          POSTGRES_PASSWORD: ""
-    environment: 
-      BUNDLE_JOBS: "4"
-      BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      PGUSER: postgres
-      PGPASSWORD: ""
-      RAILS_ENV: test
-    working_directory: ~/myapp
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v2-dependencies-{{ checksum "Gemfile.lock" }}
-            - v2-dependencies-
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: yarn install
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: rails db:create
-          command: bundle exec rails db:create
-      - run:
-          name: rails db:migrate
-          command: bundle exec rails db:migrate
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      - run:
-          name: webpack Install
-          command: |
-            bundle exec rails webpacker:compile
-
+      - setup
   test:
     docker:
       - image: circleci/ruby:2.7-node
@@ -75,17 +37,7 @@ jobs:
       PGPASSWORD: ""
       RAILS_ENV: test
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v2-dependencies-{{ checksum "Gemfile.lock" }}
-            - v2-dependencies-
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: yarn install
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+      - setup
       - run:
           name: rails db:create
           command: bundle exec rails db:create
@@ -99,21 +51,39 @@ jobs:
           name: rails test
           command: bundle exec rails test
 
-  deploy:
-    machine:
-      enabled: true
-    steps:
-      - checkout
-      - run:
-          no_output_timeout: 30m
-          name: Deploy master to heroku
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-            fi
-      - run:
-          name: precompile
-          command: bundle exec rails assets:precompile RAILS_ENV=production
+  # deploy:
+  #   docker:
+  #     - image: cimg/ruby:2.7-node
+  #       environment:
+  #         RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: 'Install Heroku CLI, if necessary'
+  #         command: |
+  #           if [[ $(command -v heroku) == "" ]]; then
+  #             curl https://cli-assets.heroku.com/install.sh | sh
+  #           else
+  #             echo "Heroku is already installed. No operation was performed."
+  #           fi
+  #     - run:
+  #         name: heroku maintenance on
+  #         command: heroku maintenance:on --app ${HEROKU_APP_NAME}
+  #     - run:
+  #         name: Deploy to Heroku_Production
+  #         command: |
+  #           git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+  #     - run:
+  #         name: export rails master key
+  #         command: |
+  #           export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+  #     - run:
+  #         name: db migration
+  #         command: |
+  #           heroku run rails db:migrate --app ${HEROKU_APP_NAME}
+  #     - run:
+  #         name: heroku maintenance off
+  #         command: heroku maintenance:off --app ${HEROKU_APP_NAME}
 
 workflows:
   version: 2
@@ -123,10 +93,10 @@ workflows:
       - test:
           requires:
             - build
-      - deploy:
-          requires:
-            - build
-            - test
-          filters:
-            branches:
-              only: master
+      # - deploy:
+      #     requires:
+      #       - build
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
