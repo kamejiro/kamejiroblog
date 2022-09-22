@@ -67,10 +67,10 @@ jobs:
           command: docker-compose --rm -f docker-compose.prod.yml run app rails webpacker:install
       - run:
           name: docker-compose package install
-          command: docker-compose  --rm-f docker-compose.prod.yml run app yarn install --check-files
+          command: docker-compose --rm -f docker-compose.prod.yml run app yarn install --check-files
       - run:
           name: docker-compose package install
-          command: docker-compose  --rm-f docker-compose.prod.yml run app yarn add jquery bootstrap @popperjs/core
+          command: docker-compose --rm -f docker-compose.prod.yml run app yarn add jquery bootstrap @popperjs/core
       - run:
           name: precompile
           command: docker-composerun --rm app rails assets:precompile RAILS_ENV=production
