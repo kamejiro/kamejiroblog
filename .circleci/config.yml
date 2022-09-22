@@ -56,13 +56,13 @@ jobs:
       - image: circleci/ruby:2.7.5-node
         environment:
           RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-    working_directory: ~/repo
+    working_directory: ~/myapp
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: docker-compose build
-          command: docker-compose -f docker-compose.prod.yml build
+          command: docker-compose -f docker-compose.prod.yml build --no-cache
       - run:
           name: docker-compose package install
           command: docker-compose -f docker-compose.prod.yml run --rm app yarn install --check-files
