@@ -68,49 +68,49 @@ jobs:
       - run:
           name: echo masterkey
           command: |
-            echo $RAILS_MSTER_KEY
+            echo $RAILS_MASTER_KEY
       - run:
           name: echo masterkey
           command: |
-            echo 'cat config/master.key'
-      - run:
-          name: docker-compose package install
-          command: docker-compose -f docker-compose.prod.yml run --rm app rails webpacker:install
-      - run:
-          name: docker-compose package install
-          command: docker-compose -f docker-compose.prod.yml run --rm app yarn add jquery bootstrap @popperjs/core
-      - run:
-          name: precompile
-          command: docker-compose run --rm app rails assets:precompile RAILS_ENV=production
-      - run:
-          name: 'Install Heroku CLI, if necessary'
-          command: |
-            if [[ $(command -v heroku) == "" ]]; then
-              curl https://cli-assets.heroku.com/install.sh | sh
-            else
-              echo "Heroku is already installed. No operation was performed."
-            fi
-      - run:
-          name: heroku maintenance on
-          command: heroku maintenance:on --app ${HEROKU_APP_NAME}
-      - run:
-          name: heroku login
-          command: heroku container:login
-      - run:
-          name: push container
-          command: heroku container:push web --app ${HEROKU_APP_NAME}
-      - run:
-          name: precompile
-          command: heroku run rails assets:precompile --app ${HEROKU_APP_NAME}
-      - run:
-          name: db migration
-          command: heroku run rails db:migrate --app ${HEROKU_APP_NAME}
-      - run:
-          name: release
-          command: heroku container:release web --app ${HEROKU_APP_NAME}
-      - run:
-          name: heroku maintenance off
-          command: heroku maintenance:off --app ${HEROKU_APP_NAME}
+            cat config/master.key
+      # - run:
+      #     name: docker-compose package install
+      #     command: docker-compose -f docker-compose.prod.yml run --rm app rails webpacker:install
+      # - run:
+      #     name: docker-compose package install
+      #     command: docker-compose -f docker-compose.prod.yml run --rm app yarn add jquery bootstrap @popperjs/core
+      # - run:
+      #     name: precompile
+      #     command: docker-compose run --rm app rails assets:precompile RAILS_ENV=production
+      # - run:
+      #     name: 'Install Heroku CLI, if necessary'
+      #     command: |
+      #       if [[ $(command -v heroku) == "" ]]; then
+      #         curl https://cli-assets.heroku.com/install.sh | sh
+      #       else
+      #         echo "Heroku is already installed. No operation was performed."
+      #       fi
+      # - run:
+      #     name: heroku maintenance on
+      #     command: heroku maintenance:on --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: heroku login
+      #     command: heroku container:login
+      # - run:
+      #     name: push container
+      #     command: heroku container:push web --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: precompile
+      #     command: heroku run rails assets:precompile --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: db migration
+      #     command: heroku run rails db:migrate --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: release
+      #     command: heroku container:release web --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: heroku maintenance off
+      #     command: heroku maintenance:off --app ${HEROKU_APP_NAME}
 
 workflows:
   version: 2
