@@ -52,10 +52,8 @@ jobs:
           command: bundle exec rails test
 
   deploy:
-    docker:
-      - image: circleci/ruby:2.7.5-node
-        environment:
-          RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    machine:
+      enabled: true
     working_directory: ~/myapp
     steps:
       - checkout
