@@ -66,7 +66,7 @@ jobs:
           name: docker-compose package install
           command: docker-compose -f docker-compose.prod.yml run --rm app yarn install --check-files
       - run:
-          name: echo masterkey
+          name: echo master.key
           command: |
             docker-compose -f docker-compose.prod.yml run --rm app env
       # - run:
