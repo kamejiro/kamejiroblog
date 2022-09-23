@@ -68,11 +68,11 @@ jobs:
       - run:
           name: echo masterkey
           command: |
-            echo $RAILS_MASTER_KEY
+            docker-compose -f docker-compose.prod.yml run --rm app env
       - run:
           name: echo masterkey
           command: |
-            cat config/master.key
+            docker-compose -f docker-compose.prod.yml run --rm app cat config/master.key
       # - run:
       #     name: docker-compose package install
       #     command: docker-compose -f docker-compose.prod.yml run --rm app rails webpacker:install
