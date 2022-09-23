@@ -57,7 +57,6 @@ jobs:
     working_directory: ~/myapp
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: docker-compose build
           command: docker-compose -f docker-compose.prod.yml build --no-cache
