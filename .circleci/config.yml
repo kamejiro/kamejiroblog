@@ -66,6 +66,14 @@ jobs:
           name: docker-compose package install
           command: docker-compose -f docker-compose.prod.yml run --rm app yarn install --check-files
       - run:
+          name: echo masterkey
+          command: |
+            echo $RAILS_MSTER_KEY
+      - run:
+          name: echo masterkey
+          command: |
+            echo 'cat config/master.key'
+      - run:
           name: docker-compose package install
           command: docker-compose -f docker-compose.prod.yml run --rm app rails webpacker:install
       - run:
