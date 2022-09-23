@@ -67,7 +67,7 @@ jobs:
           command: docker-compose -f docker-compose.prod.yml run --rm app yarn install --check-files
       - run:
           name: docker-compose package install
-          command: docker-compose -f docker-compose.prod.yml run --rm app rails webpacker:install
+          command: docker-compose -f docker-compose.prod.yml run --rm -e RAILS_MASTER_KEY=${RAILS_MASTER_KEY} app rails webpacker:install
       - run:
           name: docker-compose package install
           command: docker-compose -f docker-compose.prod.yml run --rm app yarn add jquery bootstrap @popperjs/core
