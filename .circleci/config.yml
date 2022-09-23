@@ -52,6 +52,8 @@ jobs:
           command: bundle exec rails test
 
   deploy:
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     machine:
       enabled: true
     working_directory: ~/myapp
