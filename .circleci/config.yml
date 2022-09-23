@@ -55,7 +55,7 @@ jobs:
     machine:
       enabled: true
     environment:
-      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      RAILS_MASTER_KEY: $RAILS_MASTER_KEY
     working_directory: ~/myapp
     steps:
       - checkout
