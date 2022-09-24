@@ -71,7 +71,7 @@ jobs:
           command: docker-compose -f docker-compose.prod.yml run --rm app yarn add jquery bootstrap @popperjs/core
       - run:
           name: precompile
-          command: docker-compose run --rm app rails assets:precompile RAILS_ENV=production
+          command: docker-compose -f docker-compose.prod.yml run --rm app rails assets:precompile RAILS_ENV=production
       - run:
           name: 'Install Heroku CLI, if necessary'
           command: |
