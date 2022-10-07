@@ -1,17 +1,27 @@
 ## リンク
 かめじろうのブログ(https://www.kamejiroblog.com)
 
-![kamejiroblog_portfolio](https://user-images.githubusercontent.com/67854405/147580109-6937fb7c-047b-4177-aa22-21a997bb5189.png)
+![kamejiroblog_abstract](https://user-images.githubusercontent.com/67854405/193039617-72aba6ac-4a1a-453f-8a27-c4a2331ad311.gif)
 
 ## サイト概要
 趣味などを文章で発信することを目的としたブログです。  
 ホームページには最新記事を中心に載せサイドバーには人気記事とカテゴリーを表示しています。主なカテゴリーはナビゲーションに表示しています。記事の管理やユーザーの管理、お問い合わせなどはヘッダーのドロップダウンメニューからアクセスします。<br>
 
+![スクリーンショット (29)](https://user-images.githubusercontent.com/67854405/193272907-a4ca921e-b35a-44d8-a3a7-da8654f5ccae.png)
+
 ## 使用技術
 - Ruby 2.7.5 ,Rails 6.1.4(フレームワーク)
+- PostgresQL(データベース)
+- jQuery
+- AWS S3(画像ストレージ)
+- docker-compose(環境構築)
+- CircleCI(ビルド、テスト、デプロイ)
 - heroku(本番環境サーバ)
+- Github(バージョン管理)
 - Windows(OS)
 - VSCode(エディタ)
+
+![技術構成図](https://user-images.githubusercontent.com/67854405/193451994-67df90cb-c471-4268-8876-1c076a15bc40.png)
 
 ## 機能一覧
 
