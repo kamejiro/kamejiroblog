@@ -15,7 +15,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 // トップへ戻る
-$(function(){
+window.addEventListener('DOMContentLoaded', function(){
   $('#top a').on('click', function(event){
     $('body, html').animate({
       scrollTop:0
@@ -25,20 +25,22 @@ $(function(){
 });
 
 // アコーディオンメニュー
-$(document).on("turbolinks:load", function(){
-  $('#search div').on('click', function(){
-    if($('.content').hasClass('open')){
-      $('.content').removeClass('open');
-      $('.content').slideUp();
-    }else{
-      $('.content').addClass('open');
-      $('.content').slideDown();
-    }
+window.addEventListener('DOMContentLoaded', function(){
+  $(document).on("turbolinks:load", function(){
+    $('#search div').on('click', function(){
+      if($('.content').hasClass('open')){
+        $('.content').removeClass('open');
+        $('.content').slideUp();
+      }else{
+        $('.content').addClass('open');
+        $('.content').slideDown();
+      }
+    });
   });
 });
 
 // クリップボードへコピー
-$(function(){
+window.addEventListener('DOMContentLoaded', function(){
   $('#copy_image').on('click', function(event){
     //対象を取得
     var targetImageTag=document.getElementById("copyTarget");
