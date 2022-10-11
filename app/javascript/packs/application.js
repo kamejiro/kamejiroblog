@@ -14,33 +14,34 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+// アコーディオンメニュー
+$(document).on('turbolinks:load', function() {
+  $('#search a').on('click', function(){
+    if($('.content').hasClass('open')){
+      $('.content').removeClass('open');
+      $('.content').slideUp();
+      return false;
+    }else{
+      $('.content').addClass('open');
+      $('.content').slideDown();
+      return false;
+    }
+  });
+});
+
 // トップへ戻る
-window.addEventListener('DOMContentLoaded', function(){
+window.onload = function(){
   $('#top a').on('click', function(event){
+    console.log("クリックされました");
     $('body, html').animate({
       scrollTop:0
     }, 800);
     event.preventDefault();
   });
-});
-
-// アコーディオンメニュー
-window.addEventListener('DOMContentLoaded', function(){
-  $(document).on("turbolinks:load", function(){
-    $('#search div').on('click', function(){
-      if($('.content').hasClass('open')){
-        $('.content').removeClass('open');
-        $('.content').slideUp();
-      }else{
-        $('.content').addClass('open');
-        $('.content').slideDown();
-      }
-    });
-  });
-});
+};
 
 // クリップボードへコピー
-window.addEventListener('DOMContentLoaded', function(){
+window.onload = function(){
   $('#copy_image').on('click', function(event){
     //対象を取得
     var targetImageTag=document.getElementById("copyTarget");
@@ -55,4 +56,4 @@ window.addEventListener('DOMContentLoaded', function(){
       console.log("coppy denied.");
     }
   });
-});
+};
