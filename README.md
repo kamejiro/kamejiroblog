@@ -18,7 +18,7 @@
 - CircleCI(ビルド、テスト、デプロイ)
 - heroku(本番環境サーバ)
 - Github(バージョン管理)
-- Windows(OS)
+- Windows,Mac(OS)
 - VSCode(エディタ)
 
 ![技術構成図](https://user-images.githubusercontent.com/67854405/193451994-67df90cb-c471-4268-8876-1c076a15bc40.png)
