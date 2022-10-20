@@ -42,9 +42,11 @@ window.onload = function(){
 
 // クリップボードへコピー
 window.onload = function(){
-  $('#copy_image').on('click', function(event){
+  $(document).on('click', '.copy_image', function(event){
     //対象を取得
-    var targetImageTag=document.getElementById("copyTarget");
+    var image_id=event.target.id;
+    console.log(`${image_id}がクリックされました`);
+    var targetImageTag=document.getElementById(`copyTarget${image_id}`);
     if(navigator.clipboard){
       //クリップボードにコピー
       navigator.clipboard.writeText(targetImageTag.outerHTML).then(function(){
@@ -56,4 +58,5 @@ window.onload = function(){
       console.log("coppy denied.");
     }
   });
+  return false;
 };

@@ -6,9 +6,9 @@
     <ul id="image_index">
       <% @images.each do |image| %>
         <li>
-          <%=image_tag image.resize_index_image, id: "copyTarget" %>
+          <%=image_tag image.resize_index_image, id: "copyTarget#{image.id}" %>
           id: <%=image.id%>
-          | <%=link_to "コピー", '' , id: "copy_image"%>
+          | <%=link_to "コピー", '' , class: "copy_image", id: image.id%>
           | <%=link_to "削除", image, method: :delete, data: {confirm: "You sure?"}%>
         </li>
       <%end%>
