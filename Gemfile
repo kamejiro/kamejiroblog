@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '1.4.5', require: false
 # 
-gem 'rexml', '3.2.4'
+gem 'rexml', '3.2.5'
 # Use font-awesome
 gem 'font-awesome-rails'
 # Use byebug
@@ -67,6 +67,9 @@ group :development do
   gem 'listen', '3.5.1'
   gem 'spring', '2.1.1'
   gem 'spring-watcher-listen', '2.0.1'
+  gem 'rubocop', '~> 1.29', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
