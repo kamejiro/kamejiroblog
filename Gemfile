@@ -50,6 +50,9 @@ gem 'rake', '13.0.6'
 gem 'public_suffix', '4.0.7'
 gem 'nokogiri', '1.13.7'
 
+# cronでバッチ処理を行う際に使用
+gem 'whenever'
+
 # group :development, :test do
 #   # Use sqlite3 as the database for Active Record
 #   gem 'sqlite3', '~> 1.4.2'
