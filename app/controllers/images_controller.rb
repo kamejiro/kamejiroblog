@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
     if @image.save
       #フラッシュとリダイレクト
       flash[:success]="image uploaded"
-      redirect_to images_url
+      redirect_to root_url
     else
       render 'new'
     end

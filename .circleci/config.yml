@@ -95,9 +95,9 @@ jobs:
       - run:
           name: db migration
           command: heroku run rails db:migrate --app ${HEROKU_APP_NAME}
-      - run:
-          name: db seed
-          command: heroku run rails db:seed --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: db seed
+      #     command: heroku run rails db:seed --app ${HEROKU_APP_NAME}
       - run:
           name: release
           command: heroku container:release web --app ${HEROKU_APP_NAME}
