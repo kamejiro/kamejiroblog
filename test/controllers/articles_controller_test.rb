@@ -15,6 +15,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get drafts" do
+    login_test(@user)
+    get drafts_path
+    assert_response :success
+  end
+
   test "should get search" do
     get search_path
     assert_response :success

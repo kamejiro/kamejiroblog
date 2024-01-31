@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/search', to: 'articles#search'
   get '/upload', to: 'images#new'
+  get '/drafts', to: 'articles#drafts'
 
   resources :articles, only: [:show, :create, :destroy, :index, :edit, :update]
   resources :categorys, only: [:show]
