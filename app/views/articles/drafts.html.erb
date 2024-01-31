@@ -1,0 +1,18 @@
+<div id="wrapper">
+  <div id="main">
+    <h2>下書き一覧</h2>
+    <%= render 'layouts/sortbar' %>
+
+    <ul id="article_index">
+      <% @articles.each do |article| %>
+        <li>
+          <%=link_to article.title, article%>
+          | <%=link_to "編集", edit_article_path(article)%>
+          | <%=link_to "削除", article, method: :delete, data: {confirm: "You sure?"}%>
+        </li>
+      <%end%>
+    </ul>
+    
+    <%= will_paginate @articles, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 1 %>
+  </div>
+</div>

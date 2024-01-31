@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     @nav=Category.take(4)
     @user=current_user
     @article=Article.find(params[:id])
-    @rank_items=Article.order(impressions_count: 'DESC').take(5)
+    @rank_items=Article.private_status_public.order(impressions_count: 'DESC').take(5)
     @categorys=Category.all
     @article.increment_impression
     if @article.private_status=="private"
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
     @nav=Category.take(4)
     @categorys=Category.all
     @user=current_user
-    @articles=Article.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
+    @articles=Article.private_status_public.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
   end
 
   def destroy
@@ -83,8 +83,15 @@ class ArticlesController < ApplicationController
     @user=current_user
     @nav=Category.take(4)
     @categorys=Category.all
-    @articles=Article.search(search_params[:keyword]).paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
+    @articles=Article.private_status_public.search(search_params[:keyword]).paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
     render 'search'
+  end
+
+  def drafts
+    @nav=Category.take(4)
+    @categorys=Category.all
+    @user=current_user
+    @articles=Article.private_status_private.paginate(page: params[:page], per_page: 10).order(created_at: 'DESC')
   end
 
   private

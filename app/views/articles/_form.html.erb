@@ -1,3 +1,5 @@
+<%= link_to "下書き一覧", drafts_path, class: "draft_link" %>
+
 <%=form_with(model: @article, local:true, id: "article_form") do |f|%>
   <%= render 'layouts/error_messages', object: f.object %>
 
