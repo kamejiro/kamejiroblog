@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'article_templates/new'
   get 'categories/show'
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   resources :categorys, only: [:show]
   resources :users, only: [:create, :destroy, :index, :edit, :update]
   resources :images, only: [:create, :destroy, :index]
+  resources :article_templates, only: [:create, :destroy, :index, :edit, :update]
 end

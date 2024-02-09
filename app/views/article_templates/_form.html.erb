@@ -1,0 +1,16 @@
+<%= link_to "下書き一覧", drafts_path, class: "draft_link" %>
+
+<%=form_with(model: @article_template, local:true, id: "article_form") do |f|%>
+  <%= render 'layouts/error_messages', object: f.object %>
+
+  <%= f.label "記事のタイトル" %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label "概要" %>
+  <%= f.text_area :abstract, class: 'form-control', size: "24x10"%>
+
+  <%= f.label "内容" %>
+  <%= f.text_area :content, class: 'form-control', size: "24x100" %>
+  
+  <%= f.submit "作成", class: "btn btn-primary" %>
+<% end %>
