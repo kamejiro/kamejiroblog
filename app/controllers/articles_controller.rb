@@ -20,7 +20,16 @@ class ArticlesController < ApplicationController
     @nav=Category.take(4)
     @categorys=Category.all
     @category=Category.first
-    @article=Article.new
+    if params[:id].present?
+      @article_template=ArticleTemplate.find(params[:id])
+    @article=Article.new(
+      title: @article_template.title, 
+      abstract: @article_template.abstract, 
+      content: @article_template.content, 
+    )
+    else
+      @article=Article.new
+    end
   end
 
   def create

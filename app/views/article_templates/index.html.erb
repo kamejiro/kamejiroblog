@@ -1,0 +1,19 @@
+<div id="wrapper">
+  <div id="main">
+    <h2>テンプレート一覧</h2>
+    <%= render 'layouts/sortbar' %>
+    <%= link_to "テンプレートの作成", article_templates_new_path, class: "draft_link" %>
+
+    <ul id="article_index">
+      <% @article_templates.each do |template| %>
+        <li>
+          <%=link_to template.title, new_path(id: template.id)%>
+          | <%=link_to "編集", edit_article_template_path(template)%>
+          | <%=link_to "削除", template, method: :delete, data: {confirm: "You sure?"}%>
+        </li>
+      <%end%>
+    </ul>
+    
+    <%= will_paginate @templates, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 1 %>
+  </div>
+</div>
