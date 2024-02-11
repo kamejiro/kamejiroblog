@@ -11,8 +11,9 @@
   </div>
   <div class="form-check">
     <%= f.radio_button :private_status, :private, class: 'form-check-input' %>
-    <%= f.label "非公開", class: 'form-check-label'%>
+    <%= f.label "非公開または下書きとして保存", class: 'form-check-label'%>
   </div>
+
 
   <%= f.label "記事のタイトル" %>
   <%= f.text_field :title, class: 'form-control' %>
@@ -21,13 +22,13 @@
   <%= f.collection_select :category_id, @categorys.all, :id, :category, include_blank: "選択してください"%>
 
   <%= f.label "概要" %>
-  <%= f.text_area :abstract, class: 'form-control', size: "24x10"%>
+  <%= f.text_area :abstract, class: 'form-control', size: "24x3"%>
 
     <%= f.label "サムネイル画像" %>
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: 'form-control' %>
 
   <%= f.label "内容" %>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
   <%= f.text_area :content, class: 'form-control', size: "24x100" %>
   
-  <%= f.submit "投稿", class: "btn btn-primary" %>
 <% end %>
