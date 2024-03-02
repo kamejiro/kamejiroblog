@@ -39,13 +39,7 @@ class ArticlesController < ApplicationController
     if article_params[:category_id] != ""
       @category=Category.find(article_params[:category_id])
       @article=@category.articles.build(article_params)
-      # サムネ画像の設定
-      if params[:article][:image] == nil
-        img=Image.find(@category.id + 1)
-        @article.image.attach(img)
-      else
-        @article.image.attach(params[:article][:image])
-      end
+      @article.image.attach(params[:article][:image])
       if @article.save
         #フラッシュとリダイレクト
         flash[:success]="Article created"
